@@ -1,10 +1,28 @@
-# My Personal Project
+# TreckTrack - Hiking Tracker Personal Project
 
-## A subtitle
+For this personal project, I want to create a hiking tracker where users can record hikes they've completed, rank their experiences, and keep an account of hikes they want to complete! 
 
-A *bulleted* list:
-- item 1
-- item 2
-- item 3
+## Why?
 
-An example of text with **bold** and *italic* fonts.  
+I decided to do this because hiking is a hobby I’ve been wanting to get into for a while and I still haven’t gotten around to it. I know lots of people relate to this—-most of us recognise that being in nature and exercising is good for us, but making time for ourselves is not always easy. While this app can’t give people more time or force them to work towards their goals, I hope that when they do, it can be a place where they proudly reflect on their achievements and feel motivated to keep doing what they enjoy.
+
+## The Basic Idea 
+
+Users will be able to track hikes they’ve completed by:
+
+**1. Recording the basic characteristics of the hike such as...**
+- The name of the hike
+- The location of the hike
+- The total distance of the trail 
+- The highest elevation of the hike
+- How long it took the user to complete
+
+**2. Recording their experience of the hike by...**
+- Rating the hike in terms of difficulty and enjoyment
+- Uploading pictures of the hike
+- Taking note of any facts worth knowing about the hike (ex: "there’s a lot of stairs", "there are many bugs", etc.)
+
+Finaly, users could also keep a list of hikes they want to complete so they can eventually get the satisfaction of crossing something off the list! 
+
+## User Stories
+
