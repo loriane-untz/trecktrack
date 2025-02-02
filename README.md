@@ -26,3 +26,7 @@ Finaly, users could also keep a list of hikes they want to complete so they can 
 
 ## User Stories
 
+- As a user, I want to be able to add a hike to my hikes-to-do list, and specify it's name and location.
+- As a user, I want to be able to view the list of hikes I've completed. 
+- As a user, I want to be able to select a hike in my collection of completed hikes, and view the hike in detail.
+- As a user, I want to be able to mark a hike as complete on my hikes-to-do list.
