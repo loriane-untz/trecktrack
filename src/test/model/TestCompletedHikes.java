@@ -7,13 +7,15 @@ import org.junit.jupiter.api.Test;
 
 public class TestCompletedHikes {
     
+    private CompletedHikes completedHikes;
+
     @BeforeEach
     void runBefore() {
-
+        completedHikes = new CompletedHikes();
     }
 
     @Test
-    void sampleTest() {
-        assertTrue(true);
+    void addHikeTest() {
+        
     }
 }

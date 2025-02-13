@@ -17,5 +17,10 @@ public class CompletedHikes {
         // TODO: implement this method
     }
 
+    // EFFECTS: prints all hikes in the list
+    public void viewCompletedHikes() {
+        // TODO: implement this method
+    }
+
 
 }

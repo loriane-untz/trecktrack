@@ -27,4 +27,9 @@ public class HikesToDo {
         // TODO: implement this method
     }
 
+    // EFFECTS: prints all hikes in the list
+     public void viewHikesToDo() {
+        // TODO: implement this method
+    }
+
 }

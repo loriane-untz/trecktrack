@@ -12,7 +12,7 @@ public class TestHikesToDo {
     }
 
     @Test
-    void sampleTest() {
+    void markHikeAsCompletedTest() {
         assertTrue(true);
     }
 }
