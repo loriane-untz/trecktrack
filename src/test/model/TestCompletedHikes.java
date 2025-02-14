@@ -14,8 +14,4 @@ public class TestCompletedHikes {
         completedHikes = new CompletedHikes();
     }
 
-    @Test
-    void addHikeTest() {
-        
-    }
 }

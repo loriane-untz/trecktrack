@@ -1,6 +1,6 @@
 package model;
 
-// A class representing a hike with a name, location, distance, elevation and a completed status
+// A class representing a hike with a name and completed status
 public class Hike {
 
     private String name;
@@ -9,7 +9,7 @@ public class Hike {
     // optional information for completed hikes and hikes to do
     private String location;
     private int distance;
-    private int peekElevation;
+    private int peakElevation;
 
     // optional information for completed hikes only
     private int totalTime;
@@ -43,8 +43,8 @@ public class Hike {
         return this.distance;
     }
 
-    public int getPeekElevation() {
-        return this.peekElevation;
+    public int getPeakElevation() {
+        return this.peakElevation;
     }
 
     public int getTotalTime() {
@@ -85,7 +85,7 @@ public class Hike {
 
     // MODIFIES: this
     // EFFECTS: sets this hike's elevation to the provided elevation
-    public void setPeekElevation(int elevation) {
+    public void setPeakElevation(int elevation) {
         // TODO: implement this method
     }
 
