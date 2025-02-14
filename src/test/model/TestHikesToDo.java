@@ -18,9 +18,5 @@ public class TestHikesToDo {
         hike1 = new Hike("Mount Rainier");
     }
 
-    @Test
-    void markHikeAsCompletedTest() {
-       // hikesToDo.add(hike1);
-       // hikesToDo.markHikeAsCompleted(hike1);
-    }
+
 }
