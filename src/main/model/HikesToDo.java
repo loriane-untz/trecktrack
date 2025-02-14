@@ -6,7 +6,6 @@ import java.util.ArrayList;
 public class HikesToDo {
 
     private ArrayList<Hike> hikesToDo;
-    private Hike hikeToDo;
 
     // EFFECTS: creates an instance of this class
     public HikesToDo() {

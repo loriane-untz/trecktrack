@@ -23,7 +23,7 @@ public class Hike {
         this.completedStatus = false;
     }
 
-    // getters
+    // Getters
 
     public String getName() {
         return name;
@@ -63,59 +63,55 @@ public class Hike {
         return this.notes;
     }
 
-    // setters
+    // Setters
 
     // MODIFIES: this
     // EFFECTS: sets this hike's status to completed
     public void markHikeAsCompleted() {
-        // TODO: implement this method
+        this.completedStatus = true;
     }
 
     // MODIFIES: this
     // EFFECTS: sets this hike's location to the provided location
     public void setLocation(String location) {
-        // TODO: implement this method
+        this.location = location;
     }
 
     // MODIFIES: this
     // EFFECTS: sets this hike's distance to the provided distance
     public void setDistance(int distance) {
-        // TODO: implement this method
+        this.distance = distance;
     }
 
     // MODIFIES: this
     // EFFECTS: sets this hike's elevation to the provided elevation
-    public void setPeakElevation(int elevation) {
-        // TODO: implement this method
+    public void setPeakElevation(int peakElevation) {
+        this.peakElevation = peakElevation;
     }
 
     // MODIFIES: this
     // EFFECTS: sets this hike's total time to the provided total time
     public void setTotalTime(int totalTime) {
-        // TODO: implement this method
+        this.totalTime = totalTime;
     }
 
     // MODIFIES: this
     // EFFECTS: sets this hike's difficulty rating to the provided difficulty rating
     public void setDifficultyRating(int difficultyRating) {
-        // TODO: implement this method
+        this.difficultyRating = difficultyRating;
     }
 
     // MODIFIES: this
     // EFFECTS: sets this hike's enjoyment rating to the provided enjoyment rating
     public void setEnjoymentRating(int enjoymentRating) {
-        // TODO: implement this method
+        this.enjoymentRating = enjoymentRating;
     }
 
     // MODIFIES: this
     // EFFECTS: sets this hike's notes to the provided notes
     public void setNotes(String notes) {
-        // TODO: implement this method
+        this.notes = notes;
     }
 
-    // EFFECTS: prints all of the hike's information
-    public void viewHike() {
-        // TODO: implement this method
-    }
 
 }
