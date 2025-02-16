@@ -7,11 +7,6 @@ public abstract class ListOfHikes {
 
     protected ArrayList<Hike> listOfHikes;
 
-    // EFFECTS: creates an empty list of hikes
-    public ListOfHikes() {
-        this.listOfHikes = new ArrayList<>();
-    }
-
     public ArrayList<Hike> getListOfHikes() {
         return this.listOfHikes;
     }
@@ -19,12 +14,12 @@ public abstract class ListOfHikes {
     // MODIFIES: this
     // EFFECTS: adds the given hike to the list
     public void addHike(Hike hike) {
-        // TODO: implement this method
+        listOfHikes.add(hike);
     }
 
     // MODIFIES: this
     // EFFECTS: removes the given hike from the list
     public void removeHike(Hike hike) {
-        // TODO: implement this method
+        listOfHikes.remove(hike);
     }
 }

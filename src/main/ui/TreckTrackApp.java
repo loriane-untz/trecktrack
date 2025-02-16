@@ -2,8 +2,11 @@ package ui;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
+import model.CompletedHikes;
 import model.Hike;
+import model.HikesToDo;
 
 // A hiking tracker application that allows users to add and view hikes to the to-do list or the completed list
 public class TreckTrackApp {
@@ -11,14 +14,19 @@ public class TreckTrackApp {
     private ArrayList<Hike> hikesToDo;
     private ArrayList<Hike> completedHikes;
 
-    // EFFECTS: creates an instance of the TreckTrack console ui application
+    private Scanner scanner;
+
+    // EFFECTS: initializes the application and starts the menue loop
     public TreckTrackApp() {
-        // TODO: implement this method
+        this.scanner = new Scanner(System.in);
+        this.hikesToDo = new ArrayList<>();
+        this.completedHikes = new ArrayList<>();
+        runApp();
     }
 
     // MODIFIES: this
-    // EFFECTS: initializes the application with the starting values
-    public void initialize() {
+    // EFFECTS: runs the main menue loop
+    public void runApp() {
         // TODO: implement this method
     }
 

@@ -1,10 +1,9 @@
 package model;
 
-// A class representing a hike with a name and completed status
+// A class representing a hike with a name
 public class Hike {
 
     private String name;
-    private Boolean completedStatus;
 
     // optional information for completed hikes and hikes to do
     private String location;
@@ -20,19 +19,12 @@ public class Hike {
     // EFFECTS: constructs a Hike with a name and an uncompleted status
     public Hike(String name) {
         this.name = name;
-        this.completedStatus = false;
     }
 
     // Getters
 
     public String getName() {
         return name;
-    }
-
-    // MODIFIES: this
-    // EFFECTS: returns true if the hike is completed, else returns false
-    public boolean getCompletedStatus() {
-        return this.completedStatus;
     }
 
     public String getLocation() {
@@ -64,12 +56,6 @@ public class Hike {
     }
 
     // Setters
-
-    // MODIFIES: this
-    // EFFECTS: sets this hike's status to completed
-    public void markHikeAsCompleted() {
-        this.completedStatus = true;
-    }
 
     // MODIFIES: this
     // EFFECTS: sets this hike's location to the provided location
