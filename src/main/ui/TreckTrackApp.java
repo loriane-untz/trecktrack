@@ -33,11 +33,11 @@ public class TreckTrackApp {
         }
     }
 
-    // EFFECTS: displays commands of the main menu
+    // EFFECTS: displays commands when viewing the main menu
     public void displayMainMenu() {
         printDivider();
         System.out.println("TRECKTRACK");
-        System.out.println("Main Menu\n");
+        System.out.println("~ Main Menu ~\n");
         System.out.println("[1] View Completed Hikes");
         System.out.println("[2] View Hikes-To-Do list");
         System.out.println("[3] Exit TreckTrack");
@@ -48,7 +48,7 @@ public class TreckTrackApp {
     public void handleMainMenu() {
         printDivider();
         System.out.print("Enter your choice here: ");
-        String input = this.scanner.nextLine().trim();
+        String input = this.scanner.nextLine().trim().toUpperCase();
 
         switch (input) {
             case "1":
@@ -72,29 +72,29 @@ public class TreckTrackApp {
         }
     }
 
-    // EFFECTS: controls the completed hikes menu
+    // EFFECTS: displays and controls the completed hikes menu
     public void viewCompletedHikes() {
         printDivider();
-        System.out.println("Completed Hikes\n");
-        displayListOfHikesMenu();
+        System.out.println("~ Completed Hikes ~\n");
+        displayListOfHikesCommands();
         if (completedHikes.isEmpty()) {
             System.out.println("You have not completed any hikes.");
         } else {
-            displayListOfHikes(completedHikes);
+            displayNumberedListOfHikes(completedHikes);
         }
         printSpacer();
         handleCompletedHikesMenu();
     }
 
-    // EFFECTS: controlls the hikes to-do menue
+    // EFFECTS: displays and controls the hikes to-do menu
     public void viewHikesToDo() {
         printDivider();
-        System.out.println("Hikes To-Do\n");
-        displayListOfHikesMenu();
+        System.out.println("~ Hikes To-Do ~\n");
+        displayListOfHikesCommands();
         if (hikesToDo.isEmpty()) {
             System.out.println("There are no hikes in your to-do list.");
         } else {
-            displayListOfHikes(hikesToDo);
+            displayNumberedListOfHikes(hikesToDo);
         }
         printSpacer();
         handleHikesToDoMenu();
@@ -102,7 +102,7 @@ public class TreckTrackApp {
 
     // REQUIRES: list of hikes is not empty
     // EFFECTS: displays a numbered list of hikes
-    public void displayListOfHikes(ArrayList<Hike> listOfHikes) {
+    public void displayNumberedListOfHikes(ArrayList<Hike> listOfHikes) {
         int listIndex = 1;
         for (Hike hike : listOfHikes) {
             System.out.println(listIndex + "." + hike.getName());
@@ -110,8 +110,8 @@ public class TreckTrackApp {
         }
     }
 
-    // EFFECTS: displays commands when viewing one of the lists
-    public void displayListOfHikesMenu() {
+    // EFFECTS: displays commands when viewing either completed or to-do list
+    public void displayListOfHikesCommands() {
         System.out.println("[E] Enter 'E' to exit to Main menu");
         System.out.println("[A] Enter 'A' to add a hike");
         System.out.println("[#] Enter a hike's number to view it in more detail");
@@ -122,7 +122,7 @@ public class TreckTrackApp {
     public void handleCompletedHikesMenu() {
         printDivider();
         System.out.print("Enter your choice here: ");
-        String input = this.scanner.nextLine().trim();
+        String input = this.scanner.nextLine().trim().toUpperCase();
 
         if (isNumber(input)) {
             int listNum = Integer.parseInt(input);
@@ -131,6 +131,7 @@ public class TreckTrackApp {
             } else {
                 printSpacer();
                 System.out.println("Invalid choice. Please try again.");
+                viewCompletedHikes();
             }
 
         } else {
@@ -146,6 +147,7 @@ public class TreckTrackApp {
                 default:
                     printSpacer();
                     System.out.println("Invalid choice. Please try again.");
+                    viewCompletedHikes();
                     break;
             }
         }
@@ -155,7 +157,7 @@ public class TreckTrackApp {
     public void handleHikesToDoMenu() {
         printDivider();
         System.out.print("Enter your choice here: ");
-        String input = this.scanner.nextLine().trim();
+        String input = this.scanner.nextLine().trim().toUpperCase();
 
         if (isNumber(input)) {
             int listNum = Integer.parseInt(input);
@@ -164,6 +166,7 @@ public class TreckTrackApp {
             } else {
                 printSpacer();
                 System.out.println("Invalid choice. Please try again.");
+                viewHikesToDo();
             }
 
         } else {
@@ -179,6 +182,7 @@ public class TreckTrackApp {
                 default:
                     printSpacer();
                     System.out.println("Invalid choice. Please try again.");
+                    viewHikesToDo();
                     break;
             }
         }
@@ -197,22 +201,25 @@ public class TreckTrackApp {
     // EFFECTS: adds a new hike to the given list
     public void addHike(ArrayList<Hike> listOfHikes) {
         System.out.print("Enter name of the hike: ");
-        String hikeName = this.scanner.nextLine().trim();
-
+        String hikeName = this.scanner.nextLine().trim().toUpperCase();
         Hike newHike = new Hike(hikeName);
 
-        System.out.print("Would you like to add more information?");
-        System.out.print(" (Enter 'Y' or 'N'): ");
-        String moreInfo = this.scanner.nextLine().trim();
+        System.out.print("Would you like to add more information? ('Y'/'N'): ");
+        String moreInfo = this.scanner.nextLine().trim().toUpperCase();
 
-        if (moreInfo == "Y") {
+        if (!moreInfo.equals("Y") && !moreInfo.equals("N")) {
+            printSpacer();
+            System.out.println("Invalid choice. Please try again.");
+        } else if (moreInfo.equals("Y")) {
             addInfoToHike(newHike);
+            listOfHikes.add(newHike);
+            printSpacer();
+            System.out.println(hikeName + " has been added to the list!");
+        } else {
+            listOfHikes.add(newHike);
+            printSpacer();
+            System.out.println(hikeName + " has been added to the list!");
         }
-
-        listOfHikes.add(newHike);
-
-        printSpacer();
-        System.out.println(hikeName + " has been added to the list!");
     }
 
     public Hike findHike(ArrayList<Hike> listOfHikes, int listNum) {
@@ -223,7 +230,7 @@ public class TreckTrackApp {
     // EFFECTS: controls the menu of a completed hike
     public void viewCompletedHike(Hike hike) {
         printDivider();
-        System.out.println(hike.getName());
+        System.out.println("~ " + hike.getName() + " ~");
         printSpacer();
         displayCompletedHikeMenu();
         printSpacer();
@@ -233,10 +240,9 @@ public class TreckTrackApp {
 
     // EFFECTS: displays commands when viewing a completed hike
     public void displayCompletedHikeMenu() {
-        System.out.println("[E] Enter 'E' Exit to Completed Hikes menu");
+        System.out.println("[E] Enter 'E' to exit to your Completed Hikes list");
         System.out.println("[D] Enter 'D' to delete hike from the list");
         System.out.println("[I] Enter 'I' to add information to the hike");
-
     }
 
     // MODIFIES: this
@@ -244,8 +250,7 @@ public class TreckTrackApp {
     public void handleCompletedHike(Hike hike) {
         printDivider();
         System.out.print("Enter your choice here: ");
-        String input = this.scanner.nextLine().trim();
-        printSpacer();
+        String input = this.scanner.nextLine().trim().toUpperCase();
 
         switch (input) {
             case "E":
@@ -253,15 +258,18 @@ public class TreckTrackApp {
                 break;
             case "D":
                 completedHikes.remove(hike);
+                printSpacer();
                 System.out.println(hike.getName() + " has been deleted from the list!");
                 viewCompletedHikes();
                 break;
             case "I":
                 addInfoToHike(hike);
+                viewCompletedHikes();
                 break;
             default:
                 printSpacer();
                 System.out.println("Invalid choice. Please try again.");
+                viewCompletedHike(hike);
                 break;
         }
     }
@@ -269,7 +277,7 @@ public class TreckTrackApp {
     // EFFECTS: controls the menu of a hike to do
     public void viewHikeToDo(Hike hike) {
         printDivider();
-        System.out.println(hike.getName());
+        System.out.println("~ " + hike.getName() + " ~");
         printSpacer();
         displayHikeToDoMenu();
         printSpacer();
@@ -279,7 +287,7 @@ public class TreckTrackApp {
 
     // EFFECTS: displays commands when viewing a hike to do
     public void displayHikeToDoMenu() {
-        System.out.println("[E] Enter 'E' Exit to To-Do menu");
+        System.out.println("[E] Enter 'E' to exit to your To-Do list");
         System.out.println("[D] Enter 'D' to delete hike from the list");
         System.out.println("[I] Enter 'I' to add information to the hike");
         System.out.println("[C] Enter 'C' to mark hike as completed");
@@ -290,9 +298,7 @@ public class TreckTrackApp {
     public void handleHikeToDo(Hike hike) {
         printDivider();
         System.out.print("Enter your choice here: ");
-        String input = this.scanner.nextLine().trim();
-        printDivider();
-        printSpacer();
+        String input = this.scanner.nextLine().trim().toUpperCase();
 
         switch (input) {
             case "E":
@@ -300,21 +306,23 @@ public class TreckTrackApp {
                 break;
             case "D":
                 hikesToDo.remove(hike);
-                System.out.println(hike.getName() + " has been deleted from the list!");
                 printSpacer();
+                System.out.println(hike.getName() + " has been deleted from the list!");
                 viewHikesToDo();
                 break;
             case "I":
                 addInfoToHike(hike);
+                viewHikesToDo();
                 break;
             case "C":
                 markHikeAsCompleted(hike);
                 printSpacer();
-                System.out.println("Hike completed. Good work!");
+                viewHikesToDo();
                 break;
             default:
                 printSpacer();
                 System.out.println("Invalid choice. Please try again.");
+                viewHikeToDo(hike);
                 break;
         }
     }
@@ -340,14 +348,22 @@ public class TreckTrackApp {
     // and asks user if they want to add more information
     public void markHikeAsCompleted(Hike hike) {
         hikesToDo.remove(hike);
-        System.out.print("Would you like to add more information?");
-        System.out.print(" (Enter 'Y' or 'N'): ");
-        String moreInfo = this.scanner.nextLine().trim();
+        printSpacer();
+        System.out.print("Would you like to add more information? ('Y'/'N'): ");
+        String moreInfo = this.scanner.nextLine().trim().toUpperCase();
 
-        if (moreInfo == "Y") {
+        if (!moreInfo.equals("Y") && !moreInfo.equals("N")) {
+            printSpacer();
+            System.out.println("Invalid choice. Please try again.");
+        } else if (moreInfo.equals("Y")) {
+            completedHikes.add(hike);
             addInfoToHike(hike);
+            printSpacer();
+            System.out.println("You completed " + hike.getName() + ". Good work!");
         } else {
             completedHikes.add(hike);
+            printSpacer();
+            System.out.println("You completed " + hike.getName() + ". Good work!");
         }
     }
 
@@ -359,33 +375,35 @@ public class TreckTrackApp {
 
         System.out.print("Enter the distance: ");
         String distance = this.scanner.nextLine().trim();
-        hike.setLocation(distance);
-
+        hike.setDistance(distance);
+ 
         System.out.print("Enter the peak elevation: ");
         String elevation = this.scanner.nextLine().trim();
-        hike.setLocation(elevation);
+        hike.setPeakElevation(elevation);
 
         if (completedHikes.contains(hike)) {
             System.out.print("Enter your total time: ");
             String time = this.scanner.nextLine().trim();
-            hike.setLocation(time);
+            hike.setTotalTime(time);
 
-            System.out.print("Enter a difficulty rating: ");
+            System.out.print("Enter a difficulty rating (/5): ");
             String difficulty = this.scanner.nextLine().trim();
-            hike.setLocation(difficulty);
+            hike.setDifficultyRating(difficulty);
 
-            System.out.print("Enter a enjoyment rating: ");
+            System.out.print("Enter a enjoyment rating (/5): ");
             String enjoyment = this.scanner.nextLine().trim();
-            hike.setLocation(enjoyment);
+            hike.setEnjoymentRating(enjoyment);
 
             System.out.print("Enter any notes: ");
             String notes = this.scanner.nextLine().trim();
-            hike.setLocation(notes);
+            hike.setNotes(notes);
 
         }
         printSpacer();
         System.out.println("Hike information has been updated.");
     }
+
+
 
     // EFFECTS: prints a divider line
     private void printDivider() {
