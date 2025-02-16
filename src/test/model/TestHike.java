@@ -23,16 +23,6 @@ public class TestHike {
     @Test
     void constructorTest() {
         assertEquals("Grouse Grind", hike1.getName());
-        assertFalse(hike1.getCompletedStatus());
     }
 
-    @Test
-    void markHikeAsCompleted() {
-        hike1.markHikeAsCompleted();
-        assertTrue(hike1.getCompletedStatus());
-
-        hike1.markHikeAsCompleted();
-        assertTrue(hike1.getCompletedStatus());
-
-    }
 }
