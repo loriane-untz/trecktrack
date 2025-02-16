@@ -28,31 +28,31 @@ public class Hike {
     }
 
     public String getLocation() {
-        return this.location;
+        return location;
     }
 
     public int getDistance() {
-        return this.distance;
+        return distance;
     }
 
     public int getPeakElevation() {
-        return this.peakElevation;
+        return peakElevation;
     }
 
     public int getTotalTime() {
-        return this.totalTime;
+        return totalTime;
     }
 
     public int getDifficultyRating() {
-        return this.difficultyRating;
+        return difficultyRating;
     }
 
     public int getEnjoymentRating() {
-        return this.enjoymentRating;
+        return enjoymentRating;
     }
 
     public String getNotes() {
-        return this.notes;
+        return notes;
     }
 
     // Setters

@@ -3,7 +3,7 @@ package model;
 import java.util.ArrayList;
 
 // Represents a list of hikes; either completed or to-do
-public abstract class ListOfHikes {
+public class ListOfHikes {
 
     protected ArrayList<Hike> listOfHikes;
 
@@ -22,4 +22,5 @@ public abstract class ListOfHikes {
     public void removeHike(Hike hike) {
         listOfHikes.remove(hike);
     }
+
 }
