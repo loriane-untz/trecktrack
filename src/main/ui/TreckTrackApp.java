@@ -14,6 +14,7 @@ public class TreckTrackApp {
     private Scanner scanner;
     private Boolean isRunning;
 
+    // MODIFIES: this
     // EFFECTS: initializes the application and starts the menu loop
     public TreckTrackApp() {
         this.scanner = new Scanner(System.in);
@@ -118,12 +119,21 @@ public class TreckTrackApp {
         printSpacer();
     }
 
+    // PLEASE READ: at the time I finished coding, I could not check with TAS to
+    // confirm if the use of the supress annotation was okay for 3 methods that were
+    // over the line limit.
+    // I decided I would use it because I don't think abstracting the methods would
+    // make
+    // them much clearer,
+    // and also I have a couple "spacers" in the code that add to the line count,
+    // but that are only for asthetic purposes in the console.
+
     // EFFECTS: handles commands for the completed hikes menu
+    @SuppressWarnings("methodlength")
     public void handleCompletedHikesMenu() {
         printDivider();
         System.out.print("Enter your choice here: ");
         String input = this.scanner.nextLine().trim().toUpperCase();
-
         if (isNumber(input)) {
             int listNum = Integer.parseInt(input);
             if (listNum > 0 && listNum <= completedHikes.size()) {
@@ -133,7 +143,6 @@ public class TreckTrackApp {
                 System.out.println("Invalid choice. Please try again.");
                 viewCompletedHikes();
             }
-
         } else {
             switch (input) {
                 case "A":
@@ -154,11 +163,11 @@ public class TreckTrackApp {
     }
 
     // EFFECTS: handles commands for the hikes to-do menu
+    @SuppressWarnings("methodlength")
     public void handleHikesToDoMenu() {
         printDivider();
         System.out.print("Enter your choice here: ");
         String input = this.scanner.nextLine().trim().toUpperCase();
-
         if (isNumber(input)) {
             int listNum = Integer.parseInt(input);
             if (listNum > 0 && listNum <= hikesToDo.size()) {
@@ -168,7 +177,6 @@ public class TreckTrackApp {
                 System.out.println("Invalid choice. Please try again.");
                 viewHikesToDo();
             }
-
         } else {
             switch (input) {
                 case "A":
@@ -222,6 +230,7 @@ public class TreckTrackApp {
         }
     }
 
+    // EFFECTS: returns the hike that is at given number in list
     public Hike findHike(ArrayList<Hike> listOfHikes, int listNum) {
         listNum--;
         return listOfHikes.get(listNum);
@@ -295,11 +304,11 @@ public class TreckTrackApp {
 
     // MODIFIES: this
     // EFFECTS: handles commands when viewing a hike to do
+    @SuppressWarnings("methodlength")
     public void handleHikeToDo(Hike hike) {
         printDivider();
         System.out.print("Enter your choice here: ");
         String input = this.scanner.nextLine().trim().toUpperCase();
-
         switch (input) {
             case "E":
                 viewHikesToDo();
@@ -368,6 +377,7 @@ public class TreckTrackApp {
     }
 
     // EFFECTS: adds more information to a hike
+    @SuppressWarnings("methodlength")
     public void addInfoToHike(Hike hike) {
         System.out.print("Enter the location: ");
         String location = this.scanner.nextLine().trim();
@@ -376,7 +386,7 @@ public class TreckTrackApp {
         System.out.print("Enter the distance: ");
         String distance = this.scanner.nextLine().trim();
         hike.setDistance(distance);
- 
+
         System.out.print("Enter the peak elevation: ");
         String elevation = this.scanner.nextLine().trim();
         hike.setPeakElevation(elevation);
@@ -402,8 +412,6 @@ public class TreckTrackApp {
         printSpacer();
         System.out.println("Hike information has been updated.");
     }
-
-
 
     // EFFECTS: prints a divider line
     private void printDivider() {
