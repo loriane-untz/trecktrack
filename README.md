@@ -26,7 +26,10 @@ Finaly, users could also keep a list of hikes they want to complete so they can 
 
 ## User Stories
 
-- As a user, I want to be able to add a hike to my hikes-to-do list, and specify it's name and location. CHECK
+- As a user, I want to be able to add a hike to my hikes-to-do list, and specify it's name and location.
 - As a user, I want to be able to view the list of hikes I've completed. 
 - As a user, I want to be able to select a hike in my collection of completed hikes, and view the hike in detail.
-- As a user, I want to be able to mark a hike as complete on my hikes-to-do list. CHECK
+- As a user, I want to be able to mark a hike as complete on my hikes-to-do list. 
+- As a user, I want to have the option to save to file any changes made in the program (meaning the Completed and the To-Do list).
+- As a user, I want to be able to load my lists from a file at any time.
+- As a user, when I quit the application or load a previous file, I want to be reminded to save my current lists to a file and I want to have the option to do so or not.
