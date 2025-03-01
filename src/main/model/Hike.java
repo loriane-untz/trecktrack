@@ -1,7 +1,12 @@
 package model;
 
+import org.json.JSONObject;
+import persistence.Writable;
+
+// CODE FROM THE FOLLOWING REPOSITORY WAS USED AS REFERENCE: https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo.git
+
 // A class representing a hike with a name
-public class Hike {
+public class Hike implements Writable {
 
     private String name;
 
@@ -99,5 +104,10 @@ public class Hike {
         this.notes = notes;
     }
 
+    @Override
+    public JSONObject toJson(boolean isCompleted) {
+        // TODO: implement this method
+        return null;
+    }
 
 }

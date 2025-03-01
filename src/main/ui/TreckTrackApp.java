@@ -1,25 +1,38 @@
 package ui;
 
+import model.Hike;
+import model.TreckTrack;
+import persistence.JsonReader;
+import persistence.JsonWriter;
+
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import model.Hike;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 
 // A hiking tracker application that allows users to add and view hikes to the to-do list or the completed list
 public class TreckTrackApp {
 
+    private static final String JSON_STORE = "./data/workroom.json";
+
     private ArrayList<Hike> hikesToDo;
     private ArrayList<Hike> completedHikes;
+    private TreckTrack tt;
+    private JsonWriter jsonWriter;
+    private JsonReader jsonReader;
 
-    private Scanner scanner;
     private Boolean isRunning;
+    private Scanner scanner;
 
     // MODIFIES: this
     // EFFECTS: initializes the application and starts the menu loop
-    public TreckTrackApp() {
+    public TreckTrackApp() throws FileNotFoundException {
         this.scanner = new Scanner(System.in);
         this.hikesToDo = new ArrayList<>();
         this.completedHikes = new ArrayList<>();
+        jsonWriter = new JsonWriter(JSON_STORE);
+        jsonReader = new JsonReader(JSON_STORE);
         runApp();
     }
 
@@ -41,7 +54,9 @@ public class TreckTrackApp {
         System.out.println("~ Main Menu ~\n");
         System.out.println("[1] View Completed Hikes");
         System.out.println("[2] View Hikes-To-Do list");
-        System.out.println("[3] Exit TreckTrack");
+        System.out.println("[3] Save Changes");
+        System.out.println("[4] Load File");
+        System.out.println("[5] Exit TreckTrack");
         printSpacer();
     }
 
@@ -60,15 +75,22 @@ public class TreckTrackApp {
                 viewHikesToDo();
                 printSpacer();
                 break;
-
             case "3":
+                saveWorkRoom();
+                printSpacer();
+                break;
+            case "4":
+                loadWorkRoom();
+                printSpacer();
+                break;
+            case "5":
                 isRunning = false;
                 System.out.println("Exiting TreckTrack. Happy hiking!");
                 break;
 
             default:
                 printSpacer();
-                System.out.println("Invalid choice. Please try again.");
+                printErrorMessage();
                 break;
         }
     }
@@ -137,10 +159,10 @@ public class TreckTrackApp {
         if (isNumber(input)) {
             int listNum = Integer.parseInt(input);
             if (listNum > 0 && listNum <= completedHikes.size()) {
-                viewCompletedHike(findHike(completedHikes, listNum));
+                viewCompletedHike(tt.findHike(completedHikes, listNum));
             } else {
                 printSpacer();
-                System.out.println("Invalid choice. Please try again.");
+                printErrorMessage();
                 viewCompletedHikes();
             }
         } else {
@@ -155,7 +177,7 @@ public class TreckTrackApp {
                     break;
                 default:
                     printSpacer();
-                    System.out.println("Invalid choice. Please try again.");
+                    printErrorMessage();
                     viewCompletedHikes();
                     break;
             }
@@ -171,10 +193,10 @@ public class TreckTrackApp {
         if (isNumber(input)) {
             int listNum = Integer.parseInt(input);
             if (listNum > 0 && listNum <= hikesToDo.size()) {
-                viewHikeToDo(findHike(hikesToDo, listNum));
+                viewHikeToDo(tt.findHike(hikesToDo, listNum));
             } else {
                 printSpacer();
-                System.out.println("Invalid choice. Please try again.");
+                printErrorMessage();
                 viewHikesToDo();
             }
         } else {
@@ -189,7 +211,7 @@ public class TreckTrackApp {
                     break;
                 default:
                     printSpacer();
-                    System.out.println("Invalid choice. Please try again.");
+                    printErrorMessage();
                     viewHikesToDo();
                     break;
             }
@@ -217,23 +239,17 @@ public class TreckTrackApp {
 
         if (!moreInfo.equals("Y") && !moreInfo.equals("N")) {
             printSpacer();
-            System.out.println("Invalid choice. Please try again.");
+            printErrorMessage();
         } else if (moreInfo.equals("Y")) {
             addInfoToHike(newHike);
-            listOfHikes.add(newHike);
+            tt.addHike(listOfHikes, newHike);
             printSpacer();
             System.out.println(hikeName + " has been added to the list!");
         } else {
-            listOfHikes.add(newHike);
+            tt.addHike(listOfHikes, newHike);
             printSpacer();
             System.out.println(hikeName + " has been added to the list!");
         }
-    }
-
-    // EFFECTS: returns the hike that is at given number in list
-    public Hike findHike(ArrayList<Hike> listOfHikes, int listNum) {
-        listNum--;
-        return listOfHikes.get(listNum);
     }
 
     // EFFECTS: controls the menu of a completed hike
@@ -277,7 +293,7 @@ public class TreckTrackApp {
                 break;
             default:
                 printSpacer();
-                System.out.println("Invalid choice. Please try again.");
+                printErrorMessage();
                 viewCompletedHike(hike);
                 break;
         }
@@ -330,7 +346,7 @@ public class TreckTrackApp {
                 break;
             default:
                 printSpacer();
-                System.out.println("Invalid choice. Please try again.");
+                printErrorMessage();
                 viewHikeToDo(hike);
                 break;
         }
@@ -363,7 +379,7 @@ public class TreckTrackApp {
 
         if (!moreInfo.equals("Y") && !moreInfo.equals("N")) {
             printSpacer();
-            System.out.println("Invalid choice. Please try again.");
+            printErrorMessage();
         } else if (moreInfo.equals("Y")) {
             completedHikes.add(hike);
             addInfoToHike(hike);
@@ -411,6 +427,21 @@ public class TreckTrackApp {
         }
         printSpacer();
         System.out.println("Hike information has been updated.");
+    }
+
+    // EFFECTS: saves TreckTrack to file
+    private void saveTreckTrack() {
+        // TODO: implement this method
+    }
+
+    // EFFECTS: loads TreckTrack from file
+    private void loadTreckTrack() {
+        // TODO: implement this method
+    }
+
+    // EFFECTS: prints an error message
+    private void printErrorMessage() {
+        System.out.println("Invalid choice, please try again.");
     }
 
     // EFFECTS: prints a divider line
