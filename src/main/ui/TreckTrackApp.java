@@ -14,7 +14,7 @@ import java.io.IOException;
 // A hiking tracker application that allows users to add and view hikes to the to-do list or the completed list
 public class TreckTrackApp {
 
-    private static final String JSON_STORE = "./data/workroom.json";
+    private static final String JSON_STORE = "./data/trecktrack.json";
 
     private ArrayList<Hike> hikesToDo;
     private ArrayList<Hike> completedHikes;
@@ -29,8 +29,9 @@ public class TreckTrackApp {
     // EFFECTS: initializes the application and starts the menu loop
     public TreckTrackApp() throws FileNotFoundException {
         this.scanner = new Scanner(System.in);
-        this.hikesToDo = new ArrayList<>();
-        this.completedHikes = new ArrayList<>();
+        this.tt = new TreckTrack();
+        this.hikesToDo = tt.getHikesToDo(); 
+        this.completedHikes = tt.getCompletedHikes();
         jsonWriter = new JsonWriter(JSON_STORE);
         jsonReader = new JsonReader(JSON_STORE);
         runApp();
@@ -85,6 +86,7 @@ public class TreckTrackApp {
                 break;
             case "5":
                 isRunning = false;
+                printSpacer();
                 System.out.println("Exiting TreckTrack. Happy hiking!");
                 break;
 
@@ -145,8 +147,7 @@ public class TreckTrackApp {
     // confirm if the use of the supress annotation was okay for 3 methods that were
     // over the line limit.
     // I decided I would use it because I don't think abstracting the methods would
-    // make
-    // them much clearer,
+    // make them much clearer,
     // and also I have a couple "spacers" in the code that add to the line count,
     // but that are only for asthetic purposes in the console.
 
@@ -435,7 +436,8 @@ public class TreckTrackApp {
             jsonWriter.open();
             jsonWriter.write(tt);
             jsonWriter.close();
-            System.out.println("Saved changes to " + JSON_STORE);
+            printDivider();
+            System.out.println("Saved changes to: " + JSON_STORE);
         } catch (FileNotFoundException e) {
             System.out.println("Unable to write to file: " + JSON_STORE);
         }
@@ -445,7 +447,11 @@ public class TreckTrackApp {
     private void loadTreckTrack() {
         try {
             tt = jsonReader.read();
-            System.out.println("Loaded progress from " + JSON_STORE);
+            printDivider();
+            printSpacer();
+            hikesToDo = tt.getHikesToDo();
+            completedHikes = tt.getCompletedHikes();
+            System.out.println("Loaded progress from: " + JSON_STORE);
         } catch (IOException e) {
             System.out.println("Unable to read from file: " + JSON_STORE);
         }

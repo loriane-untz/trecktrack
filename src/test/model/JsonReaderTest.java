@@ -12,9 +12,9 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class JsonReaderTest extends JsonTest {
 
-    private static final String INVALID_FILE = "./data/noSuchFile.json";
+    private static final String INVALID_FILE = "/invalid/path/to/file.json";
     private static final String EMPTY_LISTS_FILE = "./data/testReaderEmptyListsTreckTrack.json";
-    private static final String GENERAL_FILE = "./data/testReaderGeneralTreckTrack.json";
+    private static final String NON_EMPTY_LISTS_FILE = "./data/testReaderNonEmptyListsTreckTrack.json";
 
     @Test
     void testReaderNonExistentFile() {
@@ -43,7 +43,7 @@ public class JsonReaderTest extends JsonTest {
 
     @Test
     void testReaderNonEmptyListsTreckTrack() {
-        JsonReader reader = new JsonReader(GENERAL_FILE);
+        JsonReader reader = new JsonReader(NON_EMPTY_LISTS_FILE);
         try {
             TreckTrack tt = reader.read();
 

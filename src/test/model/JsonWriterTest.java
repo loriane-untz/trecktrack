@@ -13,9 +13,9 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class JsonWriterTest extends JsonTest {
 
-    private static final String INVALID_FILE = "./data/my\\0illegal:fileName.json";
+    private static final String INVALID_FILE = "/invalid/path/to/file.json";
     private static final String EMPTY_LISTS_FILE = "./data/testWriterEmptyListsTreckTrack.json";
-    private static final String GENERAL_FILE = "./data/testWriterGeneralTreckTrack.json";
+    private static final String NON_EMPTY_LISTS_FILE = "./data/testWriterNonEmptyListsTreckTrack.json";
 
     @Test
     void testWriterInvalidFile() {
@@ -56,12 +56,12 @@ public class JsonWriterTest extends JsonTest {
             tt.addHike(tt.getCompletedHikes(), new Hike("Grouse Grind"));
             tt.addHike(tt.getHikesToDo(), new Hike("Quarry Rock"));
 
-            JsonWriter writer = new JsonWriter(GENERAL_FILE);
+            JsonWriter writer = new JsonWriter(NON_EMPTY_LISTS_FILE);
             writer.open();
             writer.write(tt);
             writer.close();
 
-            JsonReader reader = new JsonReader(GENERAL_FILE);
+            JsonReader reader = new JsonReader(NON_EMPTY_LISTS_FILE);
             tt = reader.read();
 
             ArrayList<Hike> completedHikes = tt.getCompletedHikes();
