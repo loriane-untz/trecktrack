@@ -76,11 +76,11 @@ public class TreckTrackApp {
                 printSpacer();
                 break;
             case "3":
-                saveWorkRoom();
+                saveTreckTrack();
                 printSpacer();
                 break;
             case "4":
-                loadWorkRoom();
+                loadTreckTrack();
                 printSpacer();
                 break;
             case "5":
@@ -431,12 +431,24 @@ public class TreckTrackApp {
 
     // EFFECTS: saves TreckTrack to file
     private void saveTreckTrack() {
-        // TODO: implement this method
+        try {
+            jsonWriter.open();
+            jsonWriter.write(tt);
+            jsonWriter.close();
+            System.out.println("Saved changes to " + JSON_STORE);
+        } catch (FileNotFoundException e) {
+            System.out.println("Unable to write to file: " + JSON_STORE);
+        }
     }
 
     // EFFECTS: loads TreckTrack from file
     private void loadTreckTrack() {
-        // TODO: implement this method
+        try {
+            tt = jsonReader.read();
+            System.out.println("Loaded progress from " + JSON_STORE);
+        } catch (IOException e) {
+            System.out.println("Unable to read from file: " + JSON_STORE);
+        }
     }
 
     // EFFECTS: prints an error message

@@ -1,12 +1,9 @@
 package model;
 
-import model.Hike;
-import model.TreckTrack;
 import persistence.JsonReader;
 import persistence.JsonWriter;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.io.IOException;
 
 import org.junit.jupiter.api.Test;
@@ -23,7 +20,6 @@ public class JsonWriterTest extends JsonTest {
     @Test
     void testWriterInvalidFile() {
         try {
-            TreckTrack tt = new TreckTrack();
             JsonWriter writer = new JsonWriter(INVALID_FILE);
             writer.open();
             fail("IOException was expected");
