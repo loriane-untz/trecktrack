@@ -12,6 +12,8 @@ import java.io.IOException;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
+// CODE FROM THE FOLLOWING REPOSITORY WAS USED AS REFERENCE: https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo.git
+
 public class JsonWriterTest extends JsonTest {
 
     private static final String INVALID_FILE = "./data/my\\0illegal:fileName.json";
@@ -71,9 +73,9 @@ public class JsonWriterTest extends JsonTest {
             assertEquals(1, hikesToDo.size());
             assertEquals(1, completedHikes.size());
 
-            checkCompletedHike(completedHikes.get(0), "Grouse Grind", null, null, null, null,null,
-            null, null);
-            checkHikeToDo(hikesToDo.get(0), "Quarry Rock", null, null, null);
+            checkHike(completedHikes.get(0), "Grouse Grind", null, null, null, null, null,
+                    null, null);
+            checkHike(hikesToDo.get(0), "Quarry Rock", null, null, null, null, null, null, null);
 
         } catch (IOException e) {
             fail("Exception should not have been thrown");

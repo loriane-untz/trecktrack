@@ -105,9 +105,18 @@ public class Hike implements Writable {
     }
 
     @Override
-    public JSONObject toJson(boolean isCompleted) {
-        // TODO: implement this method
-        return null;
+    public JSONObject toJson() {
+
+        JSONObject json = new JSONObject();
+        json.put("name", name);
+        json.put("location", location);
+        json.put("distance", distance);
+        json.put("totalTime", totalTime);
+        json.put("difficultyRating", difficultyRating);
+        json.put("enjoymentRating", enjoymentRating);
+        json.put("notes", notes);
+
+        return json;
     }
 
 }

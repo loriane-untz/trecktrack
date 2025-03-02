@@ -8,6 +8,8 @@ import java.io.IOException;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
+// CODE FROM THE FOLLOWING REPOSITORY WAS USED AS REFERENCE: https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo.git
+
 public class JsonReaderTest extends JsonTest {
 
     private static final String INVALID_FILE = "./data/noSuchFile.json";
@@ -50,9 +52,9 @@ public class JsonReaderTest extends JsonTest {
             assertEquals(1, hikesToDo.size());
             assertEquals(1, completedHikes.size());
 
-            checkCompletedHike(completedHikes.get(0), "Grouse Grind", "Grouse Mountain", "2.5km", "1,100m", "3h", "3",
+            checkHike(completedHikes.get(0), "Grouse Grind", "Grouse Mountain", "2.5km", "1,100m", "3h", "3",
                     "3", "Too many stairs...");
-            checkHikeToDo(hikesToDo.get(0), "Quarry Rock", null, null, null);
+            checkHike(hikesToDo.get(0), "Quarry Rock", null, null, null, null, null, null, null);
 
         } catch (IOException e) {
             fail("Couldn't read from file");

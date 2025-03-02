@@ -53,13 +53,18 @@ public class TreckTrack implements Writable {
     // EFFECTS: converts TreckTrack into a JSON object
     @Override
     public JSONObject toJson() {
-        // TODO: implement this method
-        return null;
+        JSONObject json = new JSONObject();
+        json.put("hikesToDo", hikesToJson(hikesToDo));
+        json.put("completedHikes", hikesToJson(completedHikes));
+        return json;
     }
 
     // EFFECTS: convert a list of hikes into a JSON array
-    private JSONArray hikesToJson(ArrayList<Hike> hikes, boolean isCompleted) {
-        // TODO: implement this method
-        return null;
+    private JSONArray hikesToJson(ArrayList<Hike> hikes) {
+        JSONArray jsonArray = new JSONArray();
+        for (Hike hike : hikes) {
+            jsonArray.put(hike.toJson());
+        }
+        return jsonArray;
     }
 }
