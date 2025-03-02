@@ -433,7 +433,7 @@ public class TreckTrackApp {
 
     // EFFECTS: displays a reminder to save user progress
     private void saveReminder() {
-        System.out.println("Save progress before quitting? ('Y'/'N'): ");
+        System.out.print("Save progress before quitting? ('Y'/'N'): ");
         String doesSave = this.scanner.nextLine().trim().toUpperCase();
 
         if (!doesSave.equals("Y") && !doesSave.equals("N")) {
