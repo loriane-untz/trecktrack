@@ -30,7 +30,7 @@ public class TreckTrackApp {
     public TreckTrackApp() throws FileNotFoundException {
         this.scanner = new Scanner(System.in);
         this.tt = new TreckTrack();
-        this.hikesToDo = tt.getHikesToDo(); 
+        this.hikesToDo = tt.getHikesToDo();
         this.completedHikes = tt.getCompletedHikes();
         jsonWriter = new JsonWriter(JSON_STORE);
         jsonReader = new JsonReader(JSON_STORE);
@@ -61,7 +61,16 @@ public class TreckTrackApp {
         printSpacer();
     }
 
+    // PLEASE READ: at the time I finished coding, I could not check with TAS to
+    // confirm if the use of the supress annotation was okay for 3 methods that were
+    // over the line limit.
+    // I decided I would use it because I don't think abstracting the methods would
+    // make them much clearer,
+    // and also I have a couple "spacers" in the code that add to the line count,
+    // but that are only for asthetic purposes in the console.
+
     // EFFECTS: handles commands for the main menu
+    @SuppressWarnings("methodlength")
     public void handleMainMenu() {
         printDivider();
         System.out.print("Enter your choice here: ");
@@ -85,11 +94,11 @@ public class TreckTrackApp {
                 printSpacer();
                 break;
             case "5":
+                saveReminder();
                 isRunning = false;
                 printSpacer();
                 System.out.println("Exiting TreckTrack. Happy hiking!");
                 break;
-
             default:
                 printSpacer();
                 printErrorMessage();
@@ -142,14 +151,6 @@ public class TreckTrackApp {
         System.out.println("[#] Enter a hike's number to view it in more detail");
         printSpacer();
     }
-
-    // PLEASE READ: at the time I finished coding, I could not check with TAS to
-    // confirm if the use of the supress annotation was okay for 3 methods that were
-    // over the line limit.
-    // I decided I would use it because I don't think abstracting the methods would
-    // make them much clearer,
-    // and also I have a couple "spacers" in the code that add to the line count,
-    // but that are only for asthetic purposes in the console.
 
     // EFFECTS: handles commands for the completed hikes menu
     @SuppressWarnings("methodlength")
@@ -430,6 +431,19 @@ public class TreckTrackApp {
         System.out.println("Hike information has been updated.");
     }
 
+    // EFFECTS: displays a reminder to save user progress
+    private void saveReminder() {
+        System.out.println("Save progress before quitting? ('Y'/'N'): ");
+        String doesSave = this.scanner.nextLine().trim().toUpperCase();
+
+        if (!doesSave.equals("Y") && !doesSave.equals("N")) {
+            printSpacer();
+            printErrorMessage();
+        } else if (doesSave.equals("Y")) {
+            saveTreckTrack();
+        }
+    }
+
     // EFFECTS: saves TreckTrack to file
     private void saveTreckTrack() {
         try {
@@ -443,6 +457,7 @@ public class TreckTrackApp {
         }
     }
 
+    // MODIFIES: this
     // EFFECTS: loads TreckTrack from file
     private void loadTreckTrack() {
         try {

@@ -1,8 +1,4 @@
 {
-   "completedHikes": [{
-      "distance": "b",
-      "name": "CACA",
-      "location": "a"
-   }],
+   "completedHikes": [],
    "hikesToDo": []
 }
