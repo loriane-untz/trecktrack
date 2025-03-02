@@ -1,0 +1,22 @@
+{
+    "completedHikes": [
+        {
+            "name": "Grouse Grind",
+            "location": null,
+            "distance": null,
+            "peakElevation": null,
+            "totalTime": null,
+            "difficultyRating": null,
+            "enjoymentRating": null,
+            "notes": null
+        }
+    ],
+    "hikesToDo": [
+        {
+            "name": "Quarry Rock",
+            "location": null,
+            "distance": null,
+            "peakElevation": null
+        }
+    ]
+}

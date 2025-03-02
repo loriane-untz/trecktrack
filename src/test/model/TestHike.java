@@ -23,4 +23,6 @@ public class TestHike {
         assertEquals("Grouse Grind", hike1.getName());
     }
 
+    
+
 }

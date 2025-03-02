@@ -1,0 +1,22 @@
+{
+    "completedHikes": [
+        {
+            "name": "Grouse Grind",
+            "location": "Grouse Mountain",
+            "distance": "2.5km",
+            "peakElevation": "1,100m",
+            "totalTime": "3h",
+            "difficultyRating": "3",
+            "enjoymentRating": "3",
+            "notes": "Too many stairs..."
+        }
+    ],
+    "hikesToDo": [
+        {
+            "name": "Quarry Rock",
+            "location": null,
+            "distance": null,
+            "peakElevation": null
+        }
+    ]
+}

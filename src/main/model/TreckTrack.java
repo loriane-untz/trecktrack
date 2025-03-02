@@ -16,13 +16,31 @@ public class TreckTrack implements Writable {
     private ArrayList<Hike> hikesToDo;
 
     // EFFECTS: constructs a TrackTrack object
-    public TreckTrack (){
+    public TreckTrack() {
         completedHikes = new ArrayList<>();
         hikesToDo = new ArrayList<>();
     }
 
+    public ArrayList<Hike> getCompletedHikes() {
+        return completedHikes;
+    }
+
+    public ArrayList<Hike> getHikesToDo() {
+        return hikesToDo;
+    }
+
+    // EFFECTS: returns number of hikes in completedHikes
+    public int numCompletedHikes() {
+        return completedHikes.size();
+    }
+
+    // EFFECTS: returns number of hikes in completedHikes
+    public int numHikesToDo() {
+        return hikesToDo.size();
+    }
+
     // EFFECTS: adds given hike to given list
-    public void addHike (ArrayList<Hike> listOfHikes, Hike hike) {
+    public void addHike(ArrayList<Hike> listOfHikes, Hike hike) {
         listOfHikes.add(hike);
     }
 
