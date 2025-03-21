@@ -8,12 +8,12 @@ import java.awt.*;
 import java.io.*;
 
 // represents a custom Jpanel with a backgroud image that is used for the main menu
-public class BackgroundPannel extends JPanel {
+public class BackgroundPanel extends JPanel {
 
     private BufferedImage backgroundImg;
 
     // constructs a BackgroundPannel with a background image
-    public BackgroundPannel(String imgPath) {
+    public BackgroundPanel(String imgPath) {
         try {
             backgroundImg = ImageIO.read(new File(imgPath));
         } catch (IOException e) {
