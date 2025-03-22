@@ -60,6 +60,18 @@ public class TreckTrackApp {
         }
     }
 
+    // MODIFIES: this
+    // EFFECTS: loads TreckTrack from file
+    public void loadTreckTrack() {
+        try {
+            tt = jsonReader.read();
+            hikesToDo = tt.getHikesToDo();
+            completedHikes = tt.getCompletedHikes();
+        } catch (IOException e) {
+            System.out.println("Unable to read from file: " + JSON_STORE);
+        }
+    }
+
     public void addInfoToHike(Hike hike, String location, String distance, String elevation,
             String time, String difficulty, String enjoyment, String notes) {
         hike.setLocation(location);
@@ -69,19 +81,6 @@ public class TreckTrackApp {
         hike.setDifficultyRating(difficulty);
         hike.setEnjoymentRating(enjoyment);
         hike.setNotes(notes);
-    }
-
-    // MODIFIES: this
-    // EFFECTS: loads TreckTrack from file
-    public void loadTreckTrack() {
-        try {
-            tt = jsonReader.read();
-            ;
-            hikesToDo = tt.getHikesToDo();
-            completedHikes = tt.getCompletedHikes();
-        } catch (IOException e) {
-            System.out.println("Unable to read from file: " + JSON_STORE);
-        }
     }
 
     public Boolean isNumber(String input) {

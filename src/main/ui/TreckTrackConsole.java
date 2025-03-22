@@ -21,6 +21,7 @@ public class TreckTrackConsole {
         this.scanner = new Scanner(System.in);
         completedHikes = treckTrackApp.getCompletedHikes();
         hikesToDo = treckTrackApp.getHikesToDo();
+
     }
 
     // MODIFIES: this
@@ -61,11 +62,11 @@ public class TreckTrackConsole {
                 printSpacer();
                 break;
             case "3":
-                treckTrackApp.saveTreckTrack();
+                saveTreckTrack();
                 printSpacer();
                 break;
             case "4":
-                treckTrackApp.loadTreckTrack();
+                loadTreckTrack();
                 printSpacer();
                 break;
             case "5":
@@ -402,8 +403,21 @@ public class TreckTrackConsole {
             printSpacer();
             printErrorMessage();
         } else if (doesSave.equals("Y")) {
-            treckTrackApp.saveTreckTrack();
+            saveTreckTrack();
         }
+    }
+
+    // EFFECTS: loads TreckTrack from file
+    private void loadTreckTrack(){
+        treckTrackApp.loadTreckTrack();
+        System.out.println("Progress loaded!");
+    }
+
+    // EFFECTS: saves TreckTrack to file
+    private void saveTreckTrack(){
+        treckTrackApp.saveTreckTrack();
+        System.out.println("Progress saved!");
+
     }
 
     // EFFECTS: prints an error message

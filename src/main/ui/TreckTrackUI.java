@@ -26,9 +26,9 @@ public class TreckTrackUI extends JFrame {
         cardLayout = new CardLayout();
         mainPanel = new JPanel(cardLayout);
 
-        mainPanel.add(new PanelHome(this), "MainMenu");
-        mainPanel.add(new PanelCompletedHikes(this), "CompletedHikes");
-        mainPanel.add(new PanelHikesToDo(this), "HikesToDo");
+        mainPanel.add(new PanelHome(this, treckTrackApp), "MainMenu");
+        mainPanel.add(new PanelCompletedHikes(this, treckTrackApp), "CompletedHikes");
+        mainPanel.add(new PanelHikesToDo(this, treckTrackApp), "HikesToDo");
 
         setContentPane(mainPanel);
     }
