@@ -3,15 +3,15 @@ package ui;
 import javax.swing.JButton;
 
 // represents the panel for the hikes to-do list
-public class HikesToDoPanel extends BackgroundPanel {
+public class PanelHikesToDo extends BackgroundPanel {
 
-    private CustomButtons customButtons;
+    private Buttons customButtons;
     private TreckTrackUI parent;
 
-    public HikesToDoPanel(TreckTrackUI parent) {
+    public PanelHikesToDo(TreckTrackUI parent) {
         super("assets/todo_background.jpg");
         this.parent = parent;
-        customButtons = new CustomButtons();
+        customButtons = new Buttons();
         setLayout(null);
 
         JButton returnButton = customButtons.makeReturnButton();

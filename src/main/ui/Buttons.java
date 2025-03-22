@@ -5,24 +5,27 @@ import java.awt.Font;
 import javax.swing.JButton;
 import javax.swing.SwingConstants;
 
-public class CustomButtons extends JButton {
+public class Buttons extends JButton {
 
     private static final Color menuButtonColor = new Color(121, 96, 85);
 
-    public CustomButtons() {
+    public Buttons() {
 
     }
 
-    // EFFECTS: returns a button
-    public JButton makeMenuButton(String text) {
-        JButton button = new JButton(text);
-        button.setFont(new Font("Monospaced", Font.BOLD, 17));
+    public void styleButton(JButton button) {
         button.setBackground(menuButtonColor);
         button.setForeground(menuButtonColor);
         button.setOpaque(true);
         button.setContentAreaFilled(false);
         button.setBorderPainted(true);
         button.setFocusPainted(false);
+    }
+
+    // EFFECTS: returns a menu button
+    public JButton makeMenuButton(String text) {
+        JButton button = new JButton(text);
+        styleButton(button);
         return button;
     }
 
@@ -31,12 +34,7 @@ public class CustomButtons extends JButton {
         JButton button = new JButton("←");
         button.setFont(new Font("Monospaced", Font.PLAIN, 50));
         button.setVerticalAlignment(SwingConstants.BOTTOM);
-        button.setBackground(menuButtonColor);
-        button.setForeground(menuButtonColor);
-        button.setOpaque(true);
-        button.setContentAreaFilled(false);
-        button.setBorderPainted(true);
-        button.setFocusPainted(false);
+        styleButton(button);
         button.setBounds(45, 580, 65, 50);
         return button;
     }
@@ -45,12 +43,7 @@ public class CustomButtons extends JButton {
     public JButton makeAddHikButton() {
         JButton button = new JButton("Add Hike");
         button.setFont(new Font("Monospaced", Font.BOLD, 17));
-        button.setBackground(menuButtonColor);
-        button.setForeground(menuButtonColor);
-        button.setOpaque(true);
-        button.setContentAreaFilled(false);
-        button.setBorderPainted(true);
-        button.setFocusPainted(false);
+        styleButton(button);
         button.setBounds(535, 580, 120, 50);
         return button;
     }

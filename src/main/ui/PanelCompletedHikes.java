@@ -3,15 +3,15 @@ package ui;
 import javax.swing.JButton;
 
 // represents the panel for the completed hikes list
-public class CompletedHikesPanel extends BackgroundPanel {
+public class PanelCompletedHikes extends BackgroundPanel {
 
-    private CustomButtons customButtons;
+    private Buttons customButtons;
     private TreckTrackUI parent;
 
-    public CompletedHikesPanel(TreckTrackUI parent) {
+    public PanelCompletedHikes(TreckTrackUI parent) {
         super("assets/completed_background.jpg");
         this.parent = parent;
-        customButtons = new CustomButtons();
+        customButtons = new Buttons();
         setLayout(null);
 
         JButton returnButton = customButtons.makeReturnButton();

@@ -3,17 +3,17 @@ package ui;
 import javax.swing.JButton;
 
 // represents the panel for the main menu
-public class MainMenuPanel extends BackgroundPanel {
+public class PanelHome extends BackgroundPanel {
 
-    private CustomButtons customButtons;
+    private Buttons customButtons;
     private TreckTrackUI parent;
     //private TreckTrackApp treckTrackApp;
 
     
-    public MainMenuPanel(TreckTrackUI parent) {
+    public PanelHome(TreckTrackUI parent) {
         super("assets/main_background.jpg");
         this.parent = parent;
-        customButtons = new CustomButtons();
+        customButtons = new Buttons();
         //this.treckTrackApp = treckTrackApp;
         setLayout(null);
 

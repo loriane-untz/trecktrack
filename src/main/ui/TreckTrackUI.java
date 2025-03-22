@@ -12,11 +12,11 @@ public class TreckTrackUI extends JFrame {
 
     private JPanel mainPanel;
     private CardLayout cardLayout;
-    //private TreckTrackApp treckTrackApp;
+    private TreckTrackApp treckTrackApp;
 
     // EFFECTS: constructs the frame by setting up the main window
-    public TreckTrackUI() {
-        //this.treckTrackApp = treckTrackApp;
+    public TreckTrackUI(TreckTrackApp treckTrackApp) {
+        this.treckTrackApp = treckTrackApp;
 
         setTitle("TreckTrack");
         setSize(WINDOW_WIDTH, WINDOW_HEIGHT);
@@ -26,9 +26,9 @@ public class TreckTrackUI extends JFrame {
         cardLayout = new CardLayout();
         mainPanel = new JPanel(cardLayout);
 
-        mainPanel.add(new MainMenuPanel(this), "MainMenu");
-        mainPanel.add(new CompletedHikesPanel(this), "CompletedHikes");
-        mainPanel.add(new HikesToDoPanel(this), "HikesToDo");
+        mainPanel.add(new PanelHome(this), "MainMenu");
+        mainPanel.add(new PanelCompletedHikes(this), "CompletedHikes");
+        mainPanel.add(new PanelHikesToDo(this), "HikesToDo");
 
         setContentPane(mainPanel);
     }
