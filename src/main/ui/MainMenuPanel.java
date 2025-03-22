@@ -1,49 +1,61 @@
 package ui;
 
-import java.awt.Color;
-import java.awt.Font;
-
 import javax.swing.JButton;
 
 // represents the panel for the main menu
 public class MainMenuPanel extends BackgroundPanel {
 
-    private static final Color menuButtonColor = new Color(121, 96, 85);
+    private CustomButtons customButtons;
+    private TreckTrackUI parent;
+    //private TreckTrackApp treckTrackApp;
+
     
-    public MainMenuPanel() {
-        super("assets/mainBackgroundIMG.png");
+    public MainMenuPanel(TreckTrackUI parent) {
+        super("assets/main_background.jpg");
+        this.parent = parent;
+        customButtons = new CustomButtons();
+        //this.treckTrackApp = treckTrackApp;
         setLayout(null);
 
-        JButton completedButton = makeMenuButton("Completed");
-        JButton toDoButton = makeMenuButton("To-Do");
+        JButton completedButton = customButtons.makeMenuButton("Completed");
+        JButton toDoButton = customButtons.makeMenuButton("To-Do");
+        JButton loadButton = customButtons.makeMenuButton("Load");
+        JButton saveButton = customButtons.makeMenuButton("Save");
         positionCompletedButton(this, completedButton);
         positionToDoButton(this, toDoButton);
+        positionLoadButton(this, loadButton);
+        positionSaveButton(this, saveButton);
+
+        completedButton.addActionListener(e -> parent.switchPanel("CompletedHikes"));
+        toDoButton.addActionListener(e -> parent.switchPanel("HikesToDo"));
+        //loadButton.addActionListener(e -> treckTrackApp.loadTreckTrack());
+        //saveButton.addActionListener(e -> treckTrackApp.loadTreckTrack());
     }
 
-    // EFFECTS: creates a main menu button
-    public JButton makeMenuButton(String text) {
-        JButton button = new JButton(text);
-        button.setFont(new Font("Monospaced", Font.BOLD, 17));
-        button.setBackground(menuButtonColor);
-        button.setForeground(menuButtonColor); 
-        button.setOpaque(true);
-        button.setContentAreaFilled(false);
-        button.setBorderPainted(true);
-        button.setFocusPainted(false);
-        return button;
-    }
-
-    // EFFECTS: positions the completed button on the main window
+    // EFFECTS: positions the completed button on the main menu panel 
     // MODIFIES: this
     public void positionCompletedButton(BackgroundPanel panel, JButton button) {
-        button.setBounds(216, 280, 130, 50);
+        button.setBounds(216, 285, 130, 50);
         panel.add(button);
     }
 
-    // EFFECTS: positions the to-do button on the main window
+    // EFFECTS: positions the to-do button on the main menu panel 
     // MODIFIES: this
     public void positionToDoButton(BackgroundPanel panel, JButton button) {
-        button.setBounds(359, 280, 130, 50); 
+        button.setBounds(359, 285, 130, 50); 
+        panel.add(button);
+    }
+    // EFFECTS: positions the load button on the main menu panel 
+    // MODIFIES: this
+    public void positionLoadButton(BackgroundPanel panel, JButton button) {
+        button.setBounds(520, 30, 70, 45); 
+        panel.add(button);
+    }
+
+    // EFFECTS: positions the save button on the main menu panel
+    // MODIFIES: this
+    public void positionSaveButton(BackgroundPanel panel, JButton button) {
+        button.setBounds(600, 30, 70, 45); 
         panel.add(button);
     }
 }

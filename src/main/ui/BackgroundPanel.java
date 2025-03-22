@@ -7,7 +7,7 @@ import javax.imageio.ImageIO;
 import java.awt.*;
 import java.io.*;
 
-// represents a custom Jpanel with a backgroud image that is used for the main menu
+// represents a custom Jpanel with a backgroud image
 public class BackgroundPanel extends JPanel {
 
     private BufferedImage backgroundImg;

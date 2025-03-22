@@ -19,4 +19,16 @@ public class Main {
             }
         });
     }
+    //     SwingUtilities.invokeLater(() -> {
+    //         try {
+    //             System.out.println("Initializing TreckTrackApp...");
+    //             TreckTrackApp treckTrackApp = new TreckTrackApp();
+    //             System.out.println("Launching UI...");
+    //             TreckTrackUI ui = new TreckTrackUI(treckTrackApp);
+    //             ui.showUI();
+    //         } catch (FileNotFoundException e) {
+    //             System.out.println("Unable to run application; file not found");
+    //         }
+    //     });
+    // }
 }

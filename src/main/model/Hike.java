@@ -110,7 +110,8 @@ public class Hike implements Writable {
         JSONObject json = new JSONObject();
         json.put("name", name);
         json.put("location", location);
-        json.put("distance", distance);
+        json.put("distance", distance); 
+        json.put("distance", peakElevation);
         json.put("totalTime", totalTime);
         json.put("difficultyRating", difficultyRating);
         json.put("enjoymentRating", enjoymentRating);

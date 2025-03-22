@@ -445,7 +445,7 @@ public class TreckTrackApp {
     }
 
     // EFFECTS: saves TreckTrack to file
-    private void saveTreckTrack() {
+    public void saveTreckTrack() {
         try {
             jsonWriter.open();
             jsonWriter.write(tt);
@@ -459,7 +459,7 @@ public class TreckTrackApp {
 
     // MODIFIES: this
     // EFFECTS: loads TreckTrack from file
-    private void loadTreckTrack() {
+    public void loadTreckTrack() {
         try {
             tt = jsonReader.read();
             printDivider();
