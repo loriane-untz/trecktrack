@@ -29,7 +29,7 @@ public class TreckTrackUI extends JFrame {
         addPanel("MainMenu", new PanelHome(this, treckTrackApp));
         addPanel("CompletedHikes", new PanelCompletedHikes(this, treckTrackApp));
         addPanel("HikesToDo", new PanelHikesToDo(this, treckTrackApp));
-        
+
         setContentPane(mainPanel);
     }
 
@@ -48,6 +48,8 @@ public class TreckTrackUI extends JFrame {
         mainPanel.add(panel, name);
     }
 
-    
+    public TreckTrackApp getTreckTrackApp() {
+    return treckTrackApp;
+}
 
 }

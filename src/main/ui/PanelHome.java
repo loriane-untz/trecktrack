@@ -5,7 +5,7 @@ import javax.swing.JButton;
 // represents the panel for the main menu
 public class PanelHome extends BackgroundPanel {
 
-    private Components customButtons;
+    private CustomComponents customButtons;
     private TreckTrackUI parent;
     private TreckTrackApp treckTrackApp;
 
@@ -13,7 +13,7 @@ public class PanelHome extends BackgroundPanel {
         super("assets/main_background.jpg");
         this.parent = parent;
         this.treckTrackApp = treckTrackApp;
-        this.customButtons = new Components();
+        this.customButtons = new CustomComponents();
         setLayout(null);
 
         settupButtons();

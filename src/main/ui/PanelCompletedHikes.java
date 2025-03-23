@@ -5,23 +5,24 @@ import model.Hike;
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JList;
-import javax.swing.JOptionPane;
 
 // represents the panel for the completed hikes list
 public class PanelCompletedHikes extends BackgroundPanel {
 
-    private Components components;
+    private CustomComponents components;
     private TreckTrackUI treckTrackUI;
     private TreckTrackApp treckTrackApp;
+    private UserInputHandling userInputHandling;
 
     private DefaultListModel<String> listModel;
     private JList<String> hikeList;
 
     public PanelCompletedHikes(TreckTrackUI treckTrackUI, TreckTrackApp treckTrackApp) {
         super("assets/ completed_background.jpg");
-        this.components = new Components();
+        this.components = new CustomComponents();
         this.treckTrackUI = treckTrackUI;
         this.treckTrackApp = treckTrackApp;
+        userInputHandling = new UserInputHandling();
         setLayout(null);
         settupButtons();
         settupHikeList();
@@ -53,11 +54,10 @@ public class PanelCompletedHikes extends BackgroundPanel {
     }
 
     private void addNewHike() {
-        String name = JOptionPane.showInputDialog(this, "Enter the name of the hike:");
-        if (name != null && !name.trim().isEmpty()) {
-            Hike newHike = new Hike(name.trim());
-            treckTrackApp.addHike(treckTrackApp.getCompletedHikes(), newHike);
-            refreshHikeList();
+        Hike newHike = userInputHandling.addHikePopUp(this, "CompletedHikes");
+        if (newHike != null) {
+        treckTrackApp.addHike(treckTrackApp.getCompletedHikes(), newHike); // or getHikesToDo()
+        refreshHikeList();
         }
     }
 
@@ -68,7 +68,7 @@ public class PanelCompletedHikes extends BackgroundPanel {
                 if (selectedName != null) {
                     for (Hike hike : treckTrackApp.getCompletedHikes()) {
                         if (hike.getName().equals(selectedName)) {
-                            PanelHikeInfo infoPanel = new PanelHikeInfo(treckTrackUI, hike);
+                            PanelHikeDetails infoPanel = new PanelHikeDetails(treckTrackUI, hike, "CompletedHikes");
                             String panelName = "HikeDetail" + hike.getName();
                             treckTrackUI.addPanel(panelName, infoPanel);
                             treckTrackUI.switchPanel(panelName);

@@ -3,25 +3,26 @@ package ui;
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JList;
-import javax.swing.JOptionPane;
 
 import model.Hike;
 
 // represents the panel for the hikes to-do list
 public class PanelHikesToDo extends BackgroundPanel {
 
-    private Components components;
+    private CustomComponents components;
     private TreckTrackUI treckTrackUI;
     private TreckTrackApp treckTrackApp;
+    private UserInputHandling userInputHandling;
 
     private DefaultListModel<String> listModel;
     private JList<String> hikeList;
 
     public PanelHikesToDo(TreckTrackUI treckTrackUI, TreckTrackApp treckTrackApp) {
         super("assets/todo_background.jpg");
-        this.components = new Components();
+        this.components = new CustomComponents();
         this.treckTrackUI = treckTrackUI;
         this.treckTrackApp = treckTrackApp;
+        userInputHandling = new UserInputHandling();
         setLayout(null);
         settupButtons();
         settupHikeList();
@@ -53,11 +54,10 @@ public class PanelHikesToDo extends BackgroundPanel {
     }
 
     private void addNewHike() {
-        String name = JOptionPane.showInputDialog(this, "Enter the name of the hike:");
-        if (name != null && !name.trim().isEmpty()) {
-            Hike newHike = new Hike(name.trim());
-            treckTrackApp.addHike(treckTrackApp.getHikesToDo(), newHike);
-            refreshHikeList();
+        Hike newHike = userInputHandling.addHikePopUp(this, "HikesToDo");
+        if (newHike != null) {
+        treckTrackApp.addHike(treckTrackApp.getHikesToDo(), newHike); // or getHikesToDo()
+        refreshHikeList();
         }
     }
 
@@ -68,7 +68,7 @@ public class PanelHikesToDo extends BackgroundPanel {
                 if (selectedName != null) {
                     for (Hike hike : treckTrackApp.getHikesToDo()) {
                         if (hike.getName().equals(selectedName)) {
-                            PanelHikeInfo infoPanel = new PanelHikeInfo(treckTrackUI, hike);
+                            PanelHikeDetails infoPanel = new PanelHikeDetails(treckTrackUI, hike, "HikesToDo");
                             String panelName = "HikeDetail" + hike.getName();
                             treckTrackUI.addPanel(panelName, infoPanel);
                             treckTrackUI.switchPanel(panelName);
