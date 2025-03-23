@@ -1,16 +1,11 @@
 {
    "completedHikes": [{
-      "notes": "",
-      "distance": "",
-      "totalTime": "",
-      "difficultyRating": "",
-      "enjoymentRating": "",
-      "name": "afwaf",
-      "location": ""
+      "notes": "fun",
+      "totalTime": "8",
+      "difficultyRating": "Medium",
+      "enjoymentRating": "5",
+      "name": "Garibaldi Lake",
+      "location": "Garibaldi Provincial Park"
    }],
-   "hikesToDo": [{
-      "distance": "",
-      "name": "fawfcaw",
-      "location": ""
-   }]
+   "hikesToDo": []
 }

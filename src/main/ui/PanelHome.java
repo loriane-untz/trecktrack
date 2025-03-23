@@ -36,7 +36,7 @@ public class PanelHome extends BackgroundPanel {
     // EFFECTS: makes a to-do button and adds it to this panel; navigates to hikes
     // to-do list
     public void setupToDoButton() {
-        JButton toDoButton = customButtons.makeMenuButton("To-Do");
+        JButton toDoButton = customButtons.makeMenuButton("To Do");
         toDoButton.addActionListener(e -> parent.switchPanel("HikesToDo"));
         toDoButton.setBounds(359, 280, 130, 50);
         this.add(toDoButton);

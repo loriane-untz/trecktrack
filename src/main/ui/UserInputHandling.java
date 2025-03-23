@@ -89,26 +89,26 @@ public class UserInputHandling {
         enjoymentField = new JTextField(15);
         notesField = new JTextField(15);
 
-        panel.add(new JLabel("Name (mandatory):"));
+        panel.add(new JLabel("Name*:"));
         panel.add(nameField);
 
         panel.add(new JLabel("Location:"));
         panel.add(locationField);
 
-        panel.add(new JLabel("Distance:"));
+        panel.add(new JLabel("Distance (Km):"));
         panel.add(distanceField);
 
-        panel.add(new JLabel("Peak Elevation:"));
+        panel.add(new JLabel("Peak Elevation (m):"));
         panel.add(elevationField);
 
         if (listType.equals("CompletedHikes")) {
-            panel.add(new JLabel("Total Time:"));
+            panel.add(new JLabel("Total Time (hours):"));
             panel.add(timeField);
 
-            panel.add(new JLabel("Difficulty Rating:"));
+            panel.add(new JLabel("Difficulty Rating (/5):"));
             panel.add(difficultyField);
 
-            panel.add(new JLabel("Enjoyement Rating:"));
+            panel.add(new JLabel("Enjoyement Rating (/5):"));
             panel.add(enjoymentField);
 
             panel.add(new JLabel("Notes:"));
