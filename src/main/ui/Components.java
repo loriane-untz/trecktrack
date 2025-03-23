@@ -6,6 +6,7 @@ import java.awt.Component;
 import java.awt.Font;
 
 import javax.swing.BorderFactory;
+import javax.swing.BoxLayout;
 import javax.swing.DefaultListCellRenderer;
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
@@ -13,6 +14,7 @@ import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
+import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
 // represents a class containing different UI components
@@ -62,6 +64,24 @@ public class Components {
         return button;
     }
 
+    // EFFECTS: returns a add info button
+    public JButton makeAddInfoButton() {
+        JButton button = new JButton("Change Info");
+        button.setFont(new Font("Monospaced", Font.BOLD, 17));
+        styleButton(button);
+        button.setBounds(345, 580, 150, 50);
+        return button;
+    }
+
+    // EFFECTS: returns a delete hike button
+    public JButton makeDeletedButton() {
+        JButton button = new JButton("Delete Hike");
+        button.setFont(new Font("Monospaced", Font.BOLD, 17));
+        styleButton(button);
+        button.setBounds(515, 580, 150, 50);
+        return button;
+    }
+
     // list
 
     // EFFECTS: stylises a list of hikes
@@ -102,5 +122,23 @@ public class Components {
             }
         });
     }
+
+    // public void addHikeInputPopUp() {
+    //     JTextField nameField = new JTextField(15);
+    //     JTextField locationField = new JTextField(15);
+    //     JTextField distanceField = new JTextField(15);
+    //     JTextField elevationField = new JTextField(15);
+
+    //     JPanel panel = new JPanel();
+    //     panel.setLayout(new BoxLayout(panel, BoxLayout.Y_AXIS));
+    //     panel.add(new JLabel("Hike Name:"));
+    //     panel.add(nameField);
+    //     panel.add(new JLabel("Location:"));
+    //     panel.add(locationField);
+    //     panel.add(new JLabel("Distance:"));
+    //     panel.add(distanceField);
+    //     panel.add(new JLabel("Max Elevation:"));
+    //     panel.add(elevationField);
+    // }
 
 }

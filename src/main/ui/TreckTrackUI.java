@@ -26,19 +26,26 @@ public class TreckTrackUI extends JFrame {
         cardLayout = new CardLayout();
         mainPanel = new JPanel(cardLayout);
 
-        mainPanel.add(new PanelHome(this, treckTrackApp), "MainMenu");
-        mainPanel.add(new PanelCompletedHikes(this, treckTrackApp), "CompletedHikes");
-        mainPanel.add(new PanelHikesToDo(this, treckTrackApp), "HikesToDo");
-
+        addPanel("MainMenu", new PanelHome(this, treckTrackApp));
+        addPanel("CompletedHikes", new PanelCompletedHikes(this, treckTrackApp));
+        addPanel("HikesToDo", new PanelHikesToDo(this, treckTrackApp));
+        
         setContentPane(mainPanel);
     }
 
+    // EFFECTS: makes the UI visible
     public void showUI() {
         setVisible(true);
     }
 
-    public void switchPanel(String panelName) {
-        cardLayout.show(mainPanel, panelName);
+    // EFFECTS: switched to panel with given name
+    public void switchPanel(String name) {
+        cardLayout.show(mainPanel, name);
+    }
+
+    // EFFECTS: adds panel with given name to the card layout
+    public void addPanel(String name, JPanel panel) {
+        mainPanel.add(panel, name);
     }
 
     
