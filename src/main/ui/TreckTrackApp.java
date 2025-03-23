@@ -9,6 +9,7 @@ import model.TreckTrack;
 import persistence.JsonReader;
 import persistence.JsonWriter;
 
+// represents basic logic for trecktrack application 
 public class TreckTrackApp {
 
     private static final String JSON_STORE = "./data/trecktrack.json";
@@ -19,6 +20,7 @@ public class TreckTrackApp {
     private JsonWriter jsonWriter;
     private JsonReader jsonReader;
 
+    // constructs a treckTrackApp object
     public TreckTrackApp() throws FileNotFoundException {
         this.tt = new TreckTrack();
         this.hikesToDo = tt.getHikesToDo();
@@ -36,14 +38,14 @@ public class TreckTrackApp {
     }
 
     // MODIFIES: this
-    // EFFECTS: adds a new hike to the given list
+    // EFFECTS: adds given hike to the given list
     public void addHike(ArrayList<Hike> listOfHikes, Hike hike) {
         listOfHikes.add(hike);
     }
 
     // REQUIRES: hikeToDo must be a hike in the to-do list
     // MODIFIES: this
-    // EFFECTS: moves the hike from to-do list to list of completed hikes,
+    // EFFECTS: moves the given hike from to-do list to completed hikes list
     public void markHikeAsCompleted(Hike hike) {
         hikesToDo.remove(hike);
         completedHikes.add(hike);
@@ -72,6 +74,8 @@ public class TreckTrackApp {
         }
     }
 
+    // MODIFIES: hike
+    // EFFECTS: updates given info for given hike
     public void addInfoToHike(Hike hike, String location, String distance, String elevation,
             String time, String difficulty, String enjoyment, String notes) {
         hike.setLocation(location);
@@ -83,6 +87,7 @@ public class TreckTrackApp {
         hike.setNotes(notes);
     }
 
+    // EFFECTS: determines if given string is a number
     public Boolean isNumber(String input) {
         try {
             Integer.parseInt(input);

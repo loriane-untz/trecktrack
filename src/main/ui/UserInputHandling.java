@@ -10,6 +10,7 @@ import javax.swing.JTextField;
 
 import model.Hike;
 
+// represents user input handling
 public class UserInputHandling {
 
     private JTextField nameField;
@@ -21,10 +22,12 @@ public class UserInputHandling {
     private JTextField enjoymentField;
     private JTextField notesField;
 
+    // constructs a UserInputHandling object
     public UserInputHandling() {
-
     }
 
+    // MODIFIES: this
+    // EFFECTS: displays a popup for adding new hikes and returns the new hike
     public Hike addHikePopUp(Component button, String listType) {
         JPanel panel = makePanel(listType);
         int result = showPopup(button, panel);
@@ -34,6 +37,9 @@ public class UserInputHandling {
         return null;
     }
 
+    @SuppressWarnings("methodlength")
+    // MODIFIES: hike
+    // EFFECTS: displays a popup for editing given hike's information
     public void editHikePopUp(Component button, Hike hike, String listType) {
         JPanel panel = makePanel(listType);
 
@@ -67,6 +73,9 @@ public class UserInputHandling {
         }
     }
 
+    @SuppressWarnings("methodlength")
+    // MODIFIES: this
+    // EFFECTS: makes a pop-up panel
     private JPanel makePanel(String listType) {
         JPanel panel = new JPanel();
         panel.setLayout(new GridLayout(0, 1));
@@ -108,6 +117,8 @@ public class UserInputHandling {
         return panel;
     }
 
+    // MODIFIES: this
+    // EFFECTS: creates new hike from user input
     private Hike createHikeFromFields(Component button, String listType) {
         String name = nameField.getText().trim();
         if (name.isEmpty()) {
@@ -129,15 +140,18 @@ public class UserInputHandling {
         return hike;
     }
 
+    // EFFECTS: shows the pop-up window
     private int showPopup(Component button, JPanel panel) {
         return JOptionPane.showConfirmDialog(
                 button,
                 panel,
-                "New Hike",
+                "Hike",
                 JOptionPane.OK_CANCEL_OPTION,
                 JOptionPane.PLAIN_MESSAGE);
     }
 
+    // MODIFIES:
+    // EFFECTS: clears user input fields
     private void clearFields() {
         nameField.setText("");
         locationField.setText("");
@@ -148,5 +162,4 @@ public class UserInputHandling {
         enjoymentField.setText("");
         notesField.setText("");
     }
-
 }

@@ -11,6 +11,7 @@ import javax.swing.text.SimpleAttributeSet;
 import javax.swing.text.StyleConstants;
 import javax.swing.text.StyledDocument;
 
+// represents the panel for a hike
 public class PanelHikeDetails extends BackgroundPanel {
 
     private CustomComponents components;
@@ -20,11 +21,12 @@ public class PanelHikeDetails extends BackgroundPanel {
     private String sourcePanel;
     private UserInputHandling userInputHandling;
 
+    // constructs a hike details panel
     public PanelHikeDetails(TreckTrackUI treckTrackUI, Hike hike, String sourcePanel) {
         super("assets/hike_background.jpg");
         this.components = new CustomComponents();
         this.treckTrackUI = treckTrackUI;
-        this.treckTrackApp = treckTrackUI.getTreckTrackApp(); 
+        this.treckTrackApp = treckTrackUI.getTreckTrackApp();
         this.hike = hike;
         this.sourcePanel = sourcePanel;
         userInputHandling = new UserInputHandling();
@@ -36,6 +38,9 @@ public class PanelHikeDetails extends BackgroundPanel {
         setupInfo();
     }
 
+    // MODIFIES: this
+    // EFFECTS: makes a return button and adds it to this panel; navigates one of
+    // the list panels
     public void setupReturnButton() {
         JButton returnButton = components.makeReturnButton();
         returnButton.addActionListener(e -> {
@@ -48,6 +53,10 @@ public class PanelHikeDetails extends BackgroundPanel {
         this.add(returnButton);
     }
 
+    // MODIFIES: this
+    // EFFECTS: makes a edit info button and adds it to this panel; opens a pop-up
+    // to
+    // edit the hike's info
     public void setupEditInfoButton() {
         JButton changeInfoButton = components.makeEditInfoButton();
         changeInfoButton.addActionListener(e -> {
@@ -59,12 +68,15 @@ public class PanelHikeDetails extends BackgroundPanel {
         this.add(changeInfoButton);
     }
 
+    // MODIFIES: this
+    // EFFECTS: makes a complete hike button and adds it to this panel; moves hike
+    // to completed list
     public void setupCompleteButton() {
         JButton completeButton = components.makeCompleteButton();
-        completeButton.addActionListener(e -> { 
+        completeButton.addActionListener(e -> {
             treckTrackApp.getHikesToDo().remove(hike);
             treckTrackApp.getCompletedHikes().add(hike);
-            
+
             treckTrackUI.addPanel("HikesToDo", new PanelHikesToDo(treckTrackUI, treckTrackApp));
             treckTrackUI.addPanel("CompletedHikes", new PanelCompletedHikes(treckTrackUI, treckTrackApp));
             treckTrackUI.switchPanel("HikesToDo");
@@ -74,6 +86,9 @@ public class PanelHikeDetails extends BackgroundPanel {
         }
     }
 
+    // MODIFIES: this
+    // EFFECTS: makes a delete button and adds it to this panel; deleted hike from
+    // list
     public void setupDeleteButton() {
         JButton deleteButton = components.makeDeletedButton();
         deleteButton.addActionListener(e -> {
@@ -90,7 +105,9 @@ public class PanelHikeDetails extends BackgroundPanel {
         this.add(deleteButton);
     }
 
-    public JPanel makeListPanel(String panelName) {
+    // MODIFIES: this
+    // EFFECTS: makes a panel based on given list name
+    private JPanel makeListPanel(String panelName) {
         if (panelName.equals("CompletedHikes")) {
             return new PanelCompletedHikes(treckTrackUI, treckTrackUI.getTreckTrackApp());
         } else {
@@ -98,7 +115,8 @@ public class PanelHikeDetails extends BackgroundPanel {
         }
     }
 
-    public void setupInfo() {
+    // EFFECTS: creates and add hike details to this panel
+    private void setupInfo() {
         JTextPane infoPane = new JTextPane();
         infoPane.setBounds(100, 100, 500, 400);
         infoPane.setEditable(false);
@@ -120,7 +138,9 @@ public class PanelHikeDetails extends BackgroundPanel {
         addInfo(infoPane, doc, nameStyle, infoCategoryStyle);
     }
 
-    public void addInfo(JTextPane infoPane, StyledDocument doc, SimpleAttributeSet nameStyle,
+    // MODIFIES: infoPane
+    // EFFECTS: makes a styled text pane showing hike info
+    private void addInfo(JTextPane infoPane, StyledDocument doc, SimpleAttributeSet nameStyle,
             SimpleAttributeSet infoCategoryStyle) {
         try {
             doc.insertString(doc.getLength(), hike.getName() + "\n\n", nameStyle);

@@ -9,62 +9,58 @@ public class PanelHome extends BackgroundPanel {
     private TreckTrackUI parent;
     private TreckTrackApp treckTrackApp;
 
+    // constructs a home panel
     public PanelHome(TreckTrackUI parent, TreckTrackApp treckTrackApp) {
         super("assets/main_background.jpg");
         this.parent = parent;
         this.treckTrackApp = treckTrackApp;
         this.customButtons = new CustomComponents();
         setLayout(null);
-
-        settupButtons();
+        setupCompletedButton();
+        setupToDoButton();
+        setupLoadButton();
+        setupSaveButton();
     }
 
-    public void settupButtons() {
+    // MODIFIES: this
+    // EFFECTS: makes a completed button and adds it to this panel; navigates
+    // completed hikes list
+    public void setupCompletedButton() {
         JButton completedButton = customButtons.makeMenuButton("Completed");
         completedButton.addActionListener(e -> parent.switchPanel("CompletedHikes"));
-        positionCompletedButton(this, completedButton);
-        
+        completedButton.setBounds(216, 280, 130, 50);
+        this.add(completedButton);
+    }
+
+    // MODIFIES: this
+    // EFFECTS: makes a to-do button and adds it to this panel; navigates to hikes
+    // to-do list
+    public void setupToDoButton() {
         JButton toDoButton = customButtons.makeMenuButton("To-Do");
         toDoButton.addActionListener(e -> parent.switchPanel("HikesToDo"));
-        positionToDoButton(this, toDoButton);
+        toDoButton.setBounds(359, 280, 130, 50);
+        this.add(toDoButton);
+    }
 
+    // MODIFIES: this
+    // EFFECTS: makes a load button and adds it to this panel; loads progress
+    public void setupLoadButton() {
         JButton loadButton = customButtons.makeMenuButton("Load");
+        loadButton.setBounds(515, 590, 70, 45);
         loadButton.addActionListener(e -> {
             treckTrackApp.loadTreckTrack();
             parent.addPanel("CompletedHikes", new PanelCompletedHikes(parent, treckTrackApp));
             parent.addPanel("HikesToDo", new PanelHikesToDo(parent, treckTrackApp));
         });
-        positionLoadButton(this, loadButton);
+        this.add(loadButton);
+    }
 
+    // MODIFIES: this
+    // EFFECTS: makes a save button and adds it to this panel; saves progress
+    public void setupSaveButton() {
         JButton saveButton = customButtons.makeMenuButton("Save");
         saveButton.addActionListener(e -> treckTrackApp.saveTreckTrack());
-        positionSaveButton(this, saveButton);
-    }
-
-    // EFFECTS: positions the completed button on the main menu panel 
-    // MODIFIES: this
-    public void positionCompletedButton(BackgroundPanel panel, JButton button) {
-        button.setBounds(216, 280, 130, 50);
-        panel.add(button);
-    }
-
-    // EFFECTS: positions the to-do button on the main menu panel 
-    // MODIFIES: this
-    public void positionToDoButton(BackgroundPanel panel, JButton button) {
-        button.setBounds(359, 280, 130, 50); 
-        panel.add(button);
-    }
-    // EFFECTS: positions the load button on the main menu panel 
-    // MODIFIES: this
-    public void positionLoadButton(BackgroundPanel panel, JButton button) {
-        button.setBounds(515, 590, 70, 45); 
-        panel.add(button);
-    }
-
-    // EFFECTS: positions the save button on the main menu panel
-    // MODIFIES: this
-    public void positionSaveButton(BackgroundPanel panel, JButton button) {
-        button.setBounds(600, 590, 70, 45); 
-        panel.add(button);
+        saveButton.setBounds(600, 590, 70, 45);
+        this.add(saveButton);
     }
 }

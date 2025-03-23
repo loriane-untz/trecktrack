@@ -4,7 +4,7 @@ import java.awt.CardLayout;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-// Represents the app's main window frame
+// Represents the app's main UI window frame
 public class TreckTrackUI extends JFrame {
 
     private static final int WINDOW_WIDTH = 700;
@@ -14,7 +14,7 @@ public class TreckTrackUI extends JFrame {
     private CardLayout cardLayout;
     private TreckTrackApp treckTrackApp;
 
-    // EFFECTS: constructs the frame by setting up the main window
+    // constructs treckTrackUI object, sets up main window frame
     public TreckTrackUI(TreckTrackApp treckTrackApp) {
         this.treckTrackApp = treckTrackApp;
 
@@ -33,16 +33,19 @@ public class TreckTrackUI extends JFrame {
         setContentPane(mainPanel);
     }
 
+    // MODIFIES: this
     // EFFECTS: makes the UI visible
     public void showUI() {
         setVisible(true);
     }
 
+    // MODIFIES: this
     // EFFECTS: switched to panel with given name
     public void switchPanel(String name) {
         cardLayout.show(mainPanel, name);
     }
 
+    // MODIFIES: this
     // EFFECTS: adds panel with given name to the card layout
     public void addPanel(String name, JPanel panel) {
         mainPanel.add(panel, name);

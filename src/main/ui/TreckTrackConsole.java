@@ -47,6 +47,7 @@ public class TreckTrackConsole {
         printSpacer();
     }
 
+    @SuppressWarnings("methodlength")
     public void handleMainMenu() {
         printDivider();
         System.out.print("Enter your choice here: ");
@@ -408,16 +409,15 @@ public class TreckTrackConsole {
     }
 
     // EFFECTS: loads TreckTrack from file
-    private void loadTreckTrack(){
+    private void loadTreckTrack() {
         treckTrackApp.loadTreckTrack();
         System.out.println("Progress loaded!");
     }
 
     // EFFECTS: saves TreckTrack to file
-    private void saveTreckTrack(){
+    private void saveTreckTrack() {
         treckTrackApp.saveTreckTrack();
         System.out.println("Progress saved!");
-
     }
 
     // EFFECTS: prints an error message

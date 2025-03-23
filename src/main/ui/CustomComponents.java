@@ -14,18 +14,21 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.SwingConstants;
 
-
 // represents a class containing different UI components
 public class CustomComponents {
 
     private static final Color brown = new Color(121, 96, 85);
 
+    // constructs a CustomComponents object
     public CustomComponents() {
     }
 
+    // ---------
     // buttons
+    // ---------
 
-    // EFFECTS: styles all buttons
+    // MODIFIES: button
+    // EFFECTS: styles given button
     public void styleButton(JButton button) {
         button.setBackground(brown);
         button.setForeground(brown);
@@ -33,12 +36,12 @@ public class CustomComponents {
         button.setContentAreaFilled(false);
         button.setBorderPainted(true);
         button.setFocusPainted(false);
+        button.setFont(new Font("Monospaced", Font.BOLD, 17));
     }
 
     // EFFECTS: returns a menu button
     public JButton makeMenuButton(String text) {
         JButton button = new JButton(text);
-        button.setFont(new Font("Monospaced", Font.BOLD, 17));
         styleButton(button);
         return button;
     }
@@ -46,9 +49,9 @@ public class CustomComponents {
     // EFFECTS: returns a return button
     public JButton makeReturnButton() {
         JButton button = new JButton("←");
+        styleButton(button);
         button.setFont(new Font("Monospaced", Font.PLAIN, 50));
         button.setVerticalAlignment(SwingConstants.BOTTOM);
-        styleButton(button);
         button.setBounds(45, 580, 65, 50);
         return button;
     }
@@ -56,7 +59,6 @@ public class CustomComponents {
     // EFFECTS: returns a add-hike button
     public JButton makeAddHikButton() {
         JButton button = new JButton("Add Hike");
-        button.setFont(new Font("Monospaced", Font.BOLD, 17));
         styleButton(button);
         button.setBounds(535, 580, 120, 50);
         return button;
@@ -65,7 +67,6 @@ public class CustomComponents {
     // EFFECTS: returns a add-info button
     public JButton makeEditInfoButton() {
         JButton button = new JButton("Edit Info");
-        button.setFont(new Font("Monospaced", Font.BOLD, 17));
         styleButton(button);
         button.setBounds(350, 580, 140, 50);
         return button;
@@ -74,23 +75,25 @@ public class CustomComponents {
     // EFFECTS: returns a delete hike button
     public JButton makeDeletedButton() {
         JButton button = new JButton("Delete Hike");
-        button.setFont(new Font("Monospaced", Font.BOLD, 17));
         styleButton(button);
         button.setBounds(505, 580, 150, 50);
         return button;
     }
 
+    // EFFECTS: returns a complete hike button
     public JButton makeCompleteButton() {
         JButton button = new JButton("Complete");
-        button.setFont(new Font("Monospaced", Font.BOLD, 17));
         styleButton(button);
         button.setBounds(183, 580, 150, 50);
         return button;
     }
 
-    // list
+    // ------
+    // lists
+    // ------
 
-    // EFFECTS: stylises a list of hikes
+    // MODIFIES: panelToAddTo
+    // EFFECTS: stylises a list of hikes and adds it to given panel
     public void settupHikeList(DefaultListModel<String> listModel, JList<String> hikeList, JPanel panelToAddTo) {
         hikeList.setForeground(Color.WHITE);
         hikeList.setOpaque(false);
@@ -106,8 +109,9 @@ public class CustomComponents {
         panelToAddTo.add(scrollPane);
     }
 
-    // EFFECTS: stylises the cells in the list of hikes
-    public void renderCell(JList<String> hikeList) {
+    // MODIFIES: hikeList
+    // EFFECTS: stylises the cells in the given hike list
+    private void renderCell(JList<String> hikeList) {
         hikeList.setCellRenderer(new DefaultListCellRenderer() {
             @Override
             public Component getListCellRendererComponent(JList<?> list, Object value, int index,
@@ -128,6 +132,4 @@ public class CustomComponents {
             }
         });
     }
-
-    
 }
