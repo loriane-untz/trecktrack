@@ -8,7 +8,7 @@ import javax.swing.JPanel;
 public class TreckTrackUI extends JFrame {
 
     private static final int WINDOW_WIDTH = 700;
-	private static final int WINDOW_HEIGHT = 700;
+    private static final int WINDOW_HEIGHT = 700;
 
     private JPanel mainPanel;
     private CardLayout cardLayout;
@@ -49,7 +49,6 @@ public class TreckTrackUI extends JFrame {
     }
 
     public TreckTrackApp getTreckTrackApp() {
-    return treckTrackApp;
-}
-
+        return treckTrackApp;
+    }
 }

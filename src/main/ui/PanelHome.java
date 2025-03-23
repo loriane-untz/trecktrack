@@ -29,11 +29,15 @@ public class PanelHome extends BackgroundPanel {
         positionToDoButton(this, toDoButton);
 
         JButton loadButton = customButtons.makeMenuButton("Load");
-        loadButton.addActionListener(e -> treckTrackApp.loadTreckTrack());
+        loadButton.addActionListener(e -> {
+            treckTrackApp.loadTreckTrack();
+            parent.addPanel("CompletedHikes", new PanelCompletedHikes(parent, treckTrackApp));
+            parent.addPanel("HikesToDo", new PanelHikesToDo(parent, treckTrackApp));
+        });
         positionLoadButton(this, loadButton);
 
         JButton saveButton = customButtons.makeMenuButton("Save");
-        saveButton.addActionListener(e -> treckTrackApp.loadTreckTrack());
+        saveButton.addActionListener(e -> treckTrackApp.saveTreckTrack());
         positionSaveButton(this, saveButton);
     }
 

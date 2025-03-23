@@ -72,6 +72,7 @@ public class PanelCompletedHikes extends BackgroundPanel {
                             String panelName = "HikeDetail" + hike.getName();
                             treckTrackUI.addPanel(panelName, infoPanel);
                             treckTrackUI.switchPanel(panelName);
+                            hikeList.clearSelection();
                             break;
                         }
                     }
@@ -79,5 +80,4 @@ public class PanelCompletedHikes extends BackgroundPanel {
             }
         });
     }
-
 }

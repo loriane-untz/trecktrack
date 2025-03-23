@@ -1,4 +1,16 @@
 {
-   "completedHikes": [{"name": "CACA"}],
-   "hikesToDo": []
+   "completedHikes": [{
+      "notes": "",
+      "distance": "",
+      "totalTime": "",
+      "difficultyRating": "",
+      "enjoymentRating": "",
+      "name": "afwaf",
+      "location": ""
+   }],
+   "hikesToDo": [{
+      "distance": "",
+      "name": "fawfcaw",
+      "location": ""
+   }]
 }

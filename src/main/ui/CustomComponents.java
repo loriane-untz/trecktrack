@@ -81,10 +81,10 @@ public class CustomComponents {
     }
 
     public JButton makeCompleteButton() {
-        JButton button = new JButton("Check off from to-do list");
+        JButton button = new JButton("Complete");
         button.setFont(new Font("Monospaced", Font.BOLD, 17));
         styleButton(button);
-        button.setBounds(100, 100, 200, 50);
+        button.setBounds(183, 580, 150, 50);
         return button;
     }
 

@@ -18,7 +18,7 @@ public class PanelHikesToDo extends BackgroundPanel {
     private JList<String> hikeList;
 
     public PanelHikesToDo(TreckTrackUI treckTrackUI, TreckTrackApp treckTrackApp) {
-        super("assets/todo_background.jpg");
+        super("assets/todo_background.png");
         this.components = new CustomComponents();
         this.treckTrackUI = treckTrackUI;
         this.treckTrackApp = treckTrackApp;
@@ -72,6 +72,7 @@ public class PanelHikesToDo extends BackgroundPanel {
                             String panelName = "HikeDetail" + hike.getName();
                             treckTrackUI.addPanel(panelName, infoPanel);
                             treckTrackUI.switchPanel(panelName);
+                            hikeList.clearSelection();
                             break;
                         }
                     }
