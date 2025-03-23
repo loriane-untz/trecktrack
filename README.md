@@ -26,11 +26,11 @@ Finaly, users could also keep a list of hikes they want to complete so they can 
 
 ## Instructions for End User
 
-- You can generate the first required action related to the user story "adding multiple Xs to a Y" by...
-- You can generate the second required action related to the user story "adding multiple Xs to a Y" by...
-- You can locate my visual component by...
-- You can save the state of my application by...
-- You can reload the state of my application by...
+- You can generate the first required action related to the user story "adding multiple Xs to a Y" by clicking the "Add Hike" button in either one of the lists
+- You can generate the second required action related to the user story "adding multiple Xs to a Y" by clicking on any hike and clicking the "Delete" button 
+- You can locate my visual component by navigating to any panel (they all have background images)
+- You can save the state of my application by clicking the "Save" button in the home page
+- You can reload the state of my application by clicking the "Load" button in the home page
 
 ## User Stories
 
