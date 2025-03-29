@@ -1,6 +1,7 @@
 package ui;
 
 import model.Hike;
+import model.TreckTrackApp;
 
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;

@@ -1,11 +1,9 @@
-package ui;
+package model;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import model.Hike;
-import model.TreckTrack;
 import persistence.JsonReader;
 import persistence.JsonWriter;
 
@@ -41,6 +39,24 @@ public class TreckTrackApp {
     // EFFECTS: adds given hike to the given list
     public void addHike(ArrayList<Hike> listOfHikes, Hike hike) {
         listOfHikes.add(hike);
+        String name = hike.getName();
+        if (listOfHikes.equals(hikesToDo)) {
+            EventLog.getInstance().logEvent(new Event(name + " was added to the to do list."));
+        } else {
+            EventLog.getInstance().logEvent(new Event(name + " was added to the completed list."));
+        }
+    }
+
+    // MODIFIES: this
+    // EFFECTS: deletes given hike from the given list
+    public void deleteHike(ArrayList<Hike> listOfHikes, Hike hike) {
+        listOfHikes.remove(hike);
+        String name = hike.getName();
+        if (listOfHikes.equals(hikesToDo)) {
+            EventLog.getInstance().logEvent(new Event(name + " was removed from the to do list."));
+        } else {
+            EventLog.getInstance().logEvent(new Event(name + " was removed from the completed list."));
+        }
     }
 
     // REQUIRES: hikeToDo must be a hike in the to-do list
@@ -49,6 +65,9 @@ public class TreckTrackApp {
     public void markHikeAsCompleted(Hike hike) {
         hikesToDo.remove(hike);
         completedHikes.add(hike);
+
+        String name = hike.getName();
+        EventLog.getInstance().logEvent(new Event(name + " was marked as completed."));
     }
 
     // EFFECTS: saves TreckTrack to file

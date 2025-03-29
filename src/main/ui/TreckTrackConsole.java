@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import model.Hike;
 import model.TreckTrack;
+import model.TreckTrackApp;
 
 public class TreckTrackConsole {
 

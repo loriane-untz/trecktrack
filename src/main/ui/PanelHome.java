@@ -2,6 +2,8 @@ package ui;
 
 import javax.swing.JButton;
 
+import model.TreckTrackApp;
+
 // represents the panel for the main menu
 public class PanelHome extends BackgroundPanel {
 

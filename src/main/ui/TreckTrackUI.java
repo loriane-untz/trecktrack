@@ -4,6 +4,8 @@ import java.awt.CardLayout;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import model.TreckTrackApp;
+
 // Represents the app's main UI window frame
 public class TreckTrackUI extends JFrame {
 

@@ -2,8 +2,20 @@ package ui;
 
 import java.io.FileNotFoundException;
 
+import model.EventLog;
+import model.TreckTrackApp;
+
 public class Main {
     public static void main(String[] args) {
+
+        Runtime.getRuntime().addShutdownHook(new Thread(() -> {
+            System.out.println("\n--- Event Log ---");
+            for (model.Event e : EventLog.getInstance()) {
+                System.out.println(e);
+                System.out.println();
+            }
+        }));
+
         boolean useGUI = true;
         try {
             TreckTrackApp treckTrackApp = new TreckTrackApp();

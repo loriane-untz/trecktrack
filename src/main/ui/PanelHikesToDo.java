@@ -5,6 +5,7 @@ import javax.swing.JButton;
 import javax.swing.JList;
 
 import model.Hike;
+import model.TreckTrackApp;
 
 // represents the panel for the hikes to-do list
 public class PanelHikesToDo extends BackgroundPanel {

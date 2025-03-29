@@ -1,6 +1,7 @@
 package ui;
 
 import model.Hike;
+import model.TreckTrackApp;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -74,8 +75,9 @@ public class PanelHikeDetails extends BackgroundPanel {
     public void setupCompleteButton() {
         JButton completeButton = components.makeCompleteButton();
         completeButton.addActionListener(e -> {
-            treckTrackApp.getHikesToDo().remove(hike);
-            treckTrackApp.getCompletedHikes().add(hike);
+            treckTrackApp.markHikeAsCompleted(hike);
+            // treckTrackApp.getHikesToDo().remove(hike);
+            // treckTrackApp.getCompletedHikes().add(hike);
 
             treckTrackUI.addPanel("HikesToDo", new PanelHikesToDo(treckTrackUI, treckTrackApp));
             treckTrackUI.addPanel("CompletedHikes", new PanelCompletedHikes(treckTrackUI, treckTrackApp));
@@ -94,9 +96,11 @@ public class PanelHikeDetails extends BackgroundPanel {
         deleteButton.addActionListener(e -> {
 
             if (sourcePanel.equals("CompletedHikes")) {
-                treckTrackUI.getTreckTrackApp().getCompletedHikes().remove(hike);
+                treckTrackApp.deleteHike(treckTrackApp.getCompletedHikes(), hike);
+                //treckTrackUI.getTreckTrackApp().getCompletedHikes().remove(hike);
             } else if (sourcePanel.equals("HikesToDo")) {
-                treckTrackUI.getTreckTrackApp().getHikesToDo().remove(hike);
+                treckTrackApp.deleteHike(treckTrackApp.getHikesToDo(), hike);
+                //treckTrackUI.getTreckTrackApp().getHikesToDo().remove(hike);
             }
 
             treckTrackUI.addPanel(sourcePanel, makeListPanel(sourcePanel));
