@@ -8,13 +8,7 @@ import model.TreckTrackApp;
 public class Main {
     public static void main(String[] args) {
 
-        Runtime.getRuntime().addShutdownHook(new Thread(() -> {
-            System.out.println("\n--- Event Log ---");
-            for (model.Event e : EventLog.getInstance()) {
-                System.out.println(e);
-                System.out.println();
-            }
-        }));
+        Runtime.getRuntime().addShutdownHook(new Thread(() -> printEventLog()));
 
         boolean useGUI = true;
         try {
@@ -26,6 +20,14 @@ public class Main {
             }
         } catch (FileNotFoundException e) {
             System.out.println("Unable to run application; file not found");
+        }
+    }
+
+    private static void printEventLog() {
+        System.out.println("\n--- Event Log ---");
+        for (model.Event e : EventLog.getInstance()) {
+            System.out.println(e);
+            System.out.println();
         }
     }
 }
