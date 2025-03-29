@@ -56,3 +56,8 @@ Quarry Rock was marked as completed.
 
 Fri Mar 28 20:19:18 PDT 2025
 Grouse Grind was removed from the completed list.
+
+## Phase 4: Task 3
+
+One thing I could have done differently is to split the Lists class into 2 separate classes, each representing one list (to do/completed). Even though this would mean there would be more repetition in the code, it could potentially provide more clarity.
+I also could have split CustomComponents into different classes for each component (EX: CustomButtons, CustomLists…) and have them implement an interface; this might be a more clean and organized setup if I wanted to keep adding different customized components to the project.

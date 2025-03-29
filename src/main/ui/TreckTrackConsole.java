@@ -3,13 +3,13 @@ package ui;
 import java.util.ArrayList;
 import java.util.Scanner;
 import model.Hike;
-import model.TreckTrack;
+import model.Lists;
 import model.TreckTrackApp;
 
 public class TreckTrackConsole {
 
     private TreckTrackApp treckTrackApp;
-    private TreckTrack tt;
+    private Lists tt;
     private Scanner scanner;
     private boolean isRunning;
 
@@ -18,7 +18,7 @@ public class TreckTrackConsole {
 
     public TreckTrackConsole(TreckTrackApp treckTrackApp) {
         this.treckTrackApp = treckTrackApp;
-        this.tt = new TreckTrack();
+        this.tt = new Lists();
         this.scanner = new Scanner(System.in);
         completedHikes = treckTrackApp.getCompletedHikes();
         hikesToDo = treckTrackApp.getHikesToDo();

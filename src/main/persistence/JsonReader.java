@@ -1,7 +1,7 @@
 package persistence;
 
 import model.Hike;
-import model.TreckTrack;
+import model.Lists;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
@@ -26,7 +26,7 @@ public class JsonReader {
 
     // EFFECTS: reads TreckTrack from file and returns it;
     // throws IOException if an error occurs reading data from file
-    public TreckTrack read() throws IOException {
+    public Lists read() throws IOException {
         String jsonData = readFile(source);
         JSONObject jsonObject = new JSONObject(jsonData);
         return parseTreckTrack(jsonObject);
@@ -43,8 +43,8 @@ public class JsonReader {
     }
 
     // EFFECTS: parses TreckTrack from JSON object and returns it
-    private TreckTrack parseTreckTrack(JSONObject jsonObject) {
-        TreckTrack tt = new TreckTrack();
+    private Lists parseTreckTrack(JSONObject jsonObject) {
+        Lists tt = new Lists();
         addLists(tt, jsonObject);
         return tt;
     }
@@ -52,7 +52,7 @@ public class JsonReader {
     // MODIFIES: TreckTrack
     // EFFECTS: parses the lists of hikes from JSON object and adds them to
     // TreckTrack
-    private void addLists(TreckTrack tt, JSONObject jsonObject) {
+    private void addLists(Lists tt, JSONObject jsonObject) {
         JSONArray completedArray = jsonObject.getJSONArray("completedHikes");
         JSONArray toDoArray = jsonObject.getJSONArray("hikesToDo");
 

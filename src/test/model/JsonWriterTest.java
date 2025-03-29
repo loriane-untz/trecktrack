@@ -32,7 +32,7 @@ public class JsonWriterTest extends JsonTest {
     @Test
     void testWriterEmptyListsTreckTrack() {
         try {
-            TreckTrack tt = new TreckTrack();
+            Lists tt = new Lists();
             JsonWriter writer = new JsonWriter(EMPTY_LISTS_FILE);
             writer.open();
             writer.write(tt);
@@ -51,7 +51,7 @@ public class JsonWriterTest extends JsonTest {
     @Test
     void testWriterNonEmptyListsTreckTrack() {
         try {
-            TreckTrack tt = new TreckTrack();
+            Lists tt = new Lists();
 
             tt.addHike(tt.getCompletedHikes(), new Hike("Grouse Grind"));
             tt.addHike(tt.getHikesToDo(), new Hike("Quarry Rock"));

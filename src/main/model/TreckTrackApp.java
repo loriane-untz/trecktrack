@@ -12,7 +12,7 @@ public class TreckTrackApp {
 
     private static final String JSON_STORE = "./data/trecktrack.json";
 
-    private TreckTrack tt;
+    private Lists tt;
     private ArrayList<Hike> hikesToDo;
     private ArrayList<Hike> completedHikes;
     private JsonWriter jsonWriter;
@@ -20,7 +20,7 @@ public class TreckTrackApp {
 
     // constructs a treckTrackApp object
     public TreckTrackApp() throws FileNotFoundException {
-        this.tt = new TreckTrack();
+        this.tt = new Lists();
         this.hikesToDo = tt.getHikesToDo();
         this.completedHikes = tt.getCompletedHikes();
         jsonWriter = new JsonWriter(JSON_STORE);

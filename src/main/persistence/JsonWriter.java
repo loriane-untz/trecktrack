@@ -1,6 +1,6 @@
 package persistence;
 
-import model.TreckTrack;
+import model.Lists;
 
 import org.json.JSONObject;
 import java.io.*;
@@ -28,7 +28,7 @@ public class JsonWriter {
 
     // MODIFIES: this
     // EFFECTS: writes JSON representation of TreckTrackApp to file
-    public void write(TreckTrack tt) {
+    public void write(Lists tt) {
         JSONObject json = tt.toJson();
         saveToFile(json.toString(TAB));
     }

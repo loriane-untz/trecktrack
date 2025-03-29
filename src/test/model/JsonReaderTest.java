@@ -32,7 +32,7 @@ public class JsonReaderTest extends JsonTest {
     void testReaderEmptyListsTreckTrack() {
         JsonReader reader = new JsonReader(EMPTY_LISTS_FILE);
         try {
-            TreckTrack tt = reader.read();
+            Lists tt = reader.read();
             assertEquals(0, tt.numCompletedHikes());
             assertEquals(0, tt.numHikesToDo());
 
@@ -45,7 +45,7 @@ public class JsonReaderTest extends JsonTest {
     void testReaderNonEmptyListsTreckTrack() {
         JsonReader reader = new JsonReader(NON_EMPTY_LISTS_FILE);
         try {
-            TreckTrack tt = reader.read();
+            Lists tt = reader.read();
 
             ArrayList<Hike> completedHikes = tt.getCompletedHikes();
             ArrayList<Hike> hikesToDo = tt.getHikesToDo();

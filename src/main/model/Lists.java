@@ -9,14 +9,14 @@ import java.util.ArrayList;
 
 // CODE FROM THE FOLLOWING REPOSITORY WAS USED AS REFERENCE: https://github.students.cs.ubc.ca/CPSC210/JsonSerializationDemo.git
 
-// represents a TreckTrack instance with a completed hikes lists and a hikes to-do list
-public class TreckTrack implements Writable {
+// represents a Lists instance with a completed hikes lists and a hikes to-do list
+public class Lists implements Writable {
 
     private ArrayList<Hike> completedHikes;
     private ArrayList<Hike> hikesToDo;
 
-    // EFFECTS: constructs a TrackTrack object
-    public TreckTrack() {
+    // EFFECTS: constructs a Lists object
+    public Lists() {
         completedHikes = new ArrayList<>();
         hikesToDo = new ArrayList<>();
     }
